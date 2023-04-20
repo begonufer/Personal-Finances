@@ -33,13 +33,25 @@ def login():
     access_token = create_access_token(identity=user.id)
     return jsonify({ "token": access_token, "user_id": user.id })
 
+
+#Esta ruta obtiene los ingresos
+@api.route('/income', methods=['GET'])
+def get_incomes():
+    pass
+
 #Esta ruta va hacer usada para registrar ingresos.
 @api.route('/income', methods=['POST'])
 def add_income():
+    pass
+
+#Esta ruta obtiene los gastos
+@api.route('/expense', methods=['GET'])
+def get_expenses():
     pass
 
 #Esta ruta va hacer usada para registrar gastos.
 @api.route('/expense', methods=['POST'])
 def add_expense():
     pass
+
 
