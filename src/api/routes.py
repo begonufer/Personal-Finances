@@ -16,3 +16,13 @@ def handle_hello():
     }
 
     return jsonify(response_body), 200
+
+#Esta ruta obtiene los ingresos
+@api.route('/income', methods=['GET'])
+def get_incomes():
+    pass
+
+#Esta ruta obtiene los gastos
+@api.route('/expense', methods=['GET'])
+def get_expenses():
+    pass
