@@ -39,6 +39,10 @@ def login():
     access_token = create_access_token(identity=user.id)
     return jsonify({ "token": access_token, "user_id": user.id })
 
+@api.route('/user/logout', methods=['POST'])
+def logout():
+    pass
+
 #Esta ruta obtiene los ingresos
 @api.route('/income', methods=['GET'])
 def get_incomes():

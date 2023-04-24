@@ -1,10 +1,13 @@
 from api.models.db import db
 
 class Expense(db.Model):
+    __tablename__='expense'
     id = db.Column(db.Integer, primary_key=True)
-    value = db.Column(db.Integer, nullable=False)
+    value = db.Column(db.Float, nullable=False)
     category = db.Column(db.String(80), unique=False, nullable=False)
     dateTime = db.Column(db.Boolean(), unique=False, nullable=False)
+    description = db.Column(db.String(80), nullable=True)
+    user_id = Column(Integer, ForeignKey('user.id'))
 
     def __repr__(self):
         return f'<Expense {self.value}>'
@@ -15,4 +18,5 @@ class Expense(db.Model):
             "value": self.value,
             "category": self.category,
             "dateTime": self.dateTime,
+            "description": self.description,
         }
