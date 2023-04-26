@@ -21,9 +21,17 @@ def handle_hello():
 def signup():
     username = request.json.get("username", None)
     password = request.json.get("password", None)
+    name = request.json.get("name", None)
+    surname = request.json.get("surname", None)
+    birthdate = request.json.get("birthdate", None)
+    phonenumber = request.json.get("phonenumber", None)
     user = User()
     user.email = username
     user.password = password
+    user.name = name
+    user.surname = surname
+    user.birth_date = birthdate
+    user.phone_number = phonenumber
     user.is_active = True
     db.session.add(user)
     db.session.commit()
