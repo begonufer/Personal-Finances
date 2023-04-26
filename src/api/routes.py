@@ -7,6 +7,7 @@ from api.models.user import User
 from api.models.db import db
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token
+import datetime
 
 api = Blueprint('api', __name__)
 
@@ -47,9 +48,7 @@ def login():
     access_token = create_access_token(identity=user.id)
     return jsonify({ "token": access_token, "user_id": user.id })
 
-@api.route('/user/logout', methods=['POST'])
-def logout():
-    pass
+
 
 #Esta ruta obtiene los ingresos
 @api.route('/income', methods=['GET'])
@@ -59,7 +58,15 @@ def get_incomes():
 #Esta ruta va hacer usada para registrar ingresos.
 @api.route('/income', methods=['POST'])
 def add_income():
-    pass
+    value = request.json.get("value", None)
+    income = Income()
+    income.value = value
+    income.category = category
+    income.dateTime = datetime.now()
+    income.description = description
+    income.user_id = user_id
+    return jsonify(income),200
+
 
 #Esta ruta obtiene los gastos
 @api.route('/expense', methods=['GET'])
@@ -69,4 +76,11 @@ def get_expenses():
 #Esta ruta va hacer usada para registrar gastos.
 @api.route('/expense', methods=['POST'])
 def add_expense():
-    pass
+    value = request.json.get("value", None)
+    expense = Expense()
+    expense.value = value
+    expense.category = category
+    expense.dateTime = datetime.now()
+    expense.description = description
+    expense.user_id = user_id
+    return jsonify(income),200
