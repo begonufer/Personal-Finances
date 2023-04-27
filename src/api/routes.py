@@ -6,7 +6,7 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models.user import User
 from api.models.db import db
 from api.utils import generate_sitemap, APIException
-from flask_jwt_extended import create_access_token
+from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
 import datetime
 from api.models.income import Income
 from api.models.expense import Expense
@@ -34,12 +34,12 @@ def signup():
     user.password = password
     user.name = name
     user.surname = surname
-    user.birth_date = birthdate
+    user.birthdate = birthdate
     user.phone_number = phonenumber
     user.is_active = True
     db.session.add(user)
     db.session.commit()
-    return jsonify(user), 200
+    return jsonify(user.serialize()), 200
 
 @api.route('/user/login', methods= ['POST'])
 def login():
@@ -60,14 +60,15 @@ def get_incomes():
 
 #Esta ruta va hacer usada para registrar ingresos.
 @api.route('/income', methods=['POST'])
+@jwt_required()
 def add_income():
-    value = request.json.get("value", None)
+    
     income = Income()
-    income.value = value
-    income.category = category
+    income.value = request.json.get("value",None)
+    income.category = request.json.get("category",None)
     income.dateTime = datetime.now()
-    income.description = description
-    income.user_id = user_id
+    income.description = request.json.get("description",None)
+    income.user_id = get_jwt_identity()
     db.session.add(income)
     db.session.commit()
     return jsonify(income),200
@@ -87,7 +88,7 @@ def add_expense():
     expense.category = category
     expense.dateTime = datetime.now()
     expense.description = description
-    expense.user_id = user_id
+    expense.user_id = get_jwt_identity()
     db.session.add(expense)
     db.session.commit()
     return jsonify(expense),200
