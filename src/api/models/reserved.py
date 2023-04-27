@@ -6,7 +6,7 @@ class Reserved (db.Model):
     value = db.Column(db.Float, nullable=False)
     category = db.Column(db.String(80), unique=False, nullable=False)
     description = db.Column(db.String(80), nullable=True)
-    user_id = Column(Integer, ForeignKey('user.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
         return f'<Reserved {self.value}>'

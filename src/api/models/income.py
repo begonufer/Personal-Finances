@@ -1,5 +1,6 @@
 from api.models.db import db
 
+
 class Income(db.Model):
     __tablename__='income'
     id = db.Column(db.Integer, primary_key=True)
@@ -7,7 +8,7 @@ class Income(db.Model):
     category = db.Column(db.String(80), unique=False, nullable=False)
     dateTime = db.Column(db.Boolean(), unique=False, nullable=True)
     description = db.Column(db.String(80), nullable=True)
-    user_id = Column(Integer, ForeignKey('user.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
         return f'<Income {self.value}>'

@@ -8,6 +8,9 @@ from api.models.db import db
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token
 import datetime
+from api.models.income import Income
+from api.models.expense import Expense
+from api.models.reserved import Reserved
 
 api = Blueprint('api', __name__)
 
@@ -65,6 +68,8 @@ def add_income():
     income.dateTime = datetime.now()
     income.description = description
     income.user_id = user_id
+    db.session.add(income)
+    db.session.commit()
     return jsonify(income),200
 
 
@@ -83,4 +88,6 @@ def add_expense():
     expense.dateTime = datetime.now()
     expense.description = description
     expense.user_id = user_id
-    return jsonify(income),200
+    db.session.add(expense)
+    db.session.commit()
+    return jsonify(expense),200
