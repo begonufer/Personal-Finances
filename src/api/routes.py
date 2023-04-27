@@ -23,19 +23,13 @@ def handle_hello():
 
 @api.route('/user', methods= ['POST'])
 def signup():
-    username = request.json.get("username", None)
-    password = request.json.get("password", None)
-    name = request.json.get("name", None)
-    surname = request.json.get("surname", None)
-    birthdate = request.json.get("birthdate", None)
-    phonenumber = request.json.get("phonenumber", None)
     user = User()
-    user.email = username
-    user.password = password
-    user.name = name
-    user.surname = surname
-    user.birthdate = birthdate
-    user.phone_number = phonenumber
+    user.email = request.json.get("email", None)
+    user.password = request.json.get("password", None)
+    user.name = request.json.get("name", None)
+    user.surname = request.json.get("surname", None)
+    user.birthdate = request.json.get("birthdate", None)
+    user.phone_number = request.json.get("phonenumber", None)
     user.is_active = True
     db.session.add(user)
     db.session.commit()
@@ -43,9 +37,9 @@ def signup():
 
 @api.route('/user/login', methods= ['POST'])
 def login():
-    username = request.json.get("username", None)
+    email = request.json.get("email", None)
     password = request.json.get("password", None)
-    user = User.query.filter_by(username=username, password=password).first()
+    user = User.query.filter_by(email=email, password=password).first()
     if user is None:
         return jsonify({"msg": "Bad username or password"}), 401
     access_token = create_access_token(identity=user.id)
