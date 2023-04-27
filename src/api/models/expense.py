@@ -5,7 +5,7 @@ class Expense(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     value = db.Column(db.Float, nullable=False)
     category = db.Column(db.String(80), unique=False, nullable=False)
-    dateTime = db.Column(db.Boolean(), unique=False, nullable=False)
+    dateTime = db.Column(db.DateTime(), unique=False, nullable=False)
     description = db.Column(db.String(80), nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 

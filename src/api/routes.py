@@ -65,7 +65,7 @@ def add_income():
     income.user_id = get_jwt_identity()
     db.session.add(income)
     db.session.commit()
-    return jsonify(income),200
+    return jsonify(income.serialize()),200
 
 
 #Esta ruta obtiene los gastos
@@ -75,14 +75,15 @@ def get_expenses():
 
 #Esta ruta va hacer usada para registrar gastos.
 @api.route('/expense', methods=['POST'])
+@jwt_required()
 def add_expense():
-    value = request.json.get("value", None)
+
     expense = Expense()
-    expense.value = value
-    expense.category = category
+    expense.value = request.json.get("value", None)
+    expense.category = request.json.get("category", None)
     expense.dateTime = datetime.now()
-    expense.description = description
+    expense.description = request.json.get("description", None)
     expense.user_id = get_jwt_identity()
     db.session.add(expense)
     db.session.commit()
-    return jsonify(expense),200
+    return jsonify(expense.serialize()),200
