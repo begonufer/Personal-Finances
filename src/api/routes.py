@@ -7,7 +7,7 @@ from api.models.user import User
 from api.models.db import db
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
-import datetime
+from datetime import datetime
 from api.models.income import Income
 from api.models.expense import Expense
 from api.models.reserved import Reserved
