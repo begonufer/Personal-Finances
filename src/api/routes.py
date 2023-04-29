@@ -50,7 +50,8 @@ def login():
 #Esta ruta obtiene los ingresos
 @api.route('/income', methods=['GET'])
 def get_incomes():
-    pass
+    incomes = Income.query.all()
+    return jsonify([income.serialize() for income in incomes])
 
 #Esta ruta va hacer usada para registrar ingresos.
 @api.route('/income', methods=['POST'])
@@ -71,7 +72,8 @@ def add_income():
 #Esta ruta obtiene los gastos
 @api.route('/expense', methods=['GET'])
 def get_expenses():
-    pass
+    expenses = Expense.query.all()
+    return jsonify([expense.serialize() for expense in expenses])
 
 #Esta ruta va hacer usada para registrar gastos.
 @api.route('/expense', methods=['POST'])
