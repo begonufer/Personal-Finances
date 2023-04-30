@@ -73,8 +73,10 @@ def add_income():
 
 #Esta ruta obtiene los gastos
 @api.route('/expense', methods=['GET'])
+@jwt_required()
 def get_expenses():
-    expenses = Expense.query.all()
+    user_id = get_jwt_identity()
+    expenses = Expense.query.filter_by(user_id = user_id).all()
     return jsonify([expense.serialize() for expense in expenses])
 
 #Esta ruta va hacer usada para registrar gastos.
