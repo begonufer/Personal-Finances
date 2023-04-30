@@ -49,8 +49,10 @@ def login():
 
 #Esta ruta obtiene los ingresos
 @api.route('/income', methods=['GET'])
+@jwt_required()
 def get_incomes():
-    incomes = Income.query.all()
+    user_id = get_jwt_identity() 
+    incomes = Income.query.filter_by(user_id=user_id).all()
     return jsonify([income.serialize() for income in incomes])
 
 #Esta ruta va hacer usada para registrar ingresos.
