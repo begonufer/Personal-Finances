@@ -2,11 +2,24 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import { BackendURL } from "./component/backendURL";
-
 import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
+
+import {Login} from"./pages/login";
+import {Signup} from"./pages/signup";
+import {Income} from"./pages/income";
+import {Expense} from"./pages/expense";
+import {User} from"./pages/user";
+import {Cartera} from"./pages/cartera";
+import {Totalincomes} from"./pages/totalincomes";
+import {Totalexpenses} from"./pages/totalexpenses";
+import {Addincome} from"./pages/addincome";
+import {Addfixedexpense} from"./pages/addfixedexpense";
+import {Addvariableexpense} from"./pages/addvariableexpense";
+import {Principal} from"./pages/principal";
+
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
@@ -24,7 +37,21 @@ const Layout = () => {
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
                     <Navbar />
+                
                     <Routes>
+                    <Route element={<Login />} path="/login" />
+                    <Route element={<Signup />} path="/signup" />
+                    <Route element={<Income />} path="/income" />
+                    <Route element={<Expense />} path="/expense" />
+                    <Route element={<User />} path="/user" />
+                    <Route element={<Cartera />} path="/cartera" />
+                    <Route element={<Totalincomes />} path="/totalincomes" />
+                    <Route element={<Totalexpenses />} path="/totalexpenses" />
+                    <Route element={<Addincome />} path="/addincome" />
+                    <Route element={<Addfixedexpense />} path="/addfixedexpense" />
+                    <Route element={<Addvariableexpense />} path="/addvariableexpense" />
+                    <Route element={<Principal />} path="/principal" />
+                    
                         <Route element={<Home />} path="/" />
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<Single />} path="/single/:theid" />
