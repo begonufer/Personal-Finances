@@ -10,7 +10,8 @@ import injectContext from "./store/appContext";
 import {Login} from"./pages/login";
 import {Signup} from"./pages/signup";
 import {Income} from"./pages/income";
-import {Expense} from"./pages/expense";
+import {FixedExpense} from"./pages/fixedexpense";
+import {VariableExpense} from"./pages/variableexpense";
 import {User} from"./pages/user";
 import {Cartera} from"./pages/cartera";
 import {Totalincomes} from"./pages/totalincomes";
@@ -23,6 +24,7 @@ import {Principal} from"./pages/principal";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import { Sidebar } from "./component/sidebar";
 
 //create your first component
 const Layout = () => {
@@ -37,20 +39,21 @@ const Layout = () => {
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
                     <Navbar />
-                
+                    <Sidebar />
                     <Routes>
-                    <Route element={<Login />} path="/login" />
-                    <Route element={<Signup />} path="/signup" />
-                    <Route element={<Income />} path="/income" />
-                    <Route element={<Expense />} path="/expense" />
-                    <Route element={<User />} path="/user" />
-                    <Route element={<Cartera />} path="/cartera" />
-                    <Route element={<Totalincomes />} path="/totalincomes" />
-                    <Route element={<Totalexpenses />} path="/totalexpenses" />
-                    <Route element={<Addincome />} path="/addincome" />
-                    <Route element={<Addfixedexpense />} path="/addfixedexpense" />
-                    <Route element={<Addvariableexpense />} path="/addvariableexpense" />
-                    <Route element={<Principal />} path="/principal" />
+                        <Route element={<Login />} path="/login" />
+                        <Route element={<Signup />} path="/signup" />
+                        <Route element={<Income />} path="/income" />
+                        <Route element={<FixedExpense />} path="/fixedexpense" />
+                        <Route element={<VariableExpense />} path="/variableexpense" />
+                        <Route element={<User />} path="/user" />
+                        <Route element={<Cartera />} path="/cartera" />
+                        <Route element={<Totalincomes />} path="/totalincomes" />
+                        <Route element={<Totalexpenses />} path="/totalexpenses" />
+                        <Route element={<Addincome />} path="/addincome" />
+                        <Route element={<Addfixedexpense />} path="/addfixedexpense" />
+                        <Route element={<Addvariableexpense />} path="/addvariableexpense" />
+                        <Route element={<Principal />} path="/principal" />
                     
                         <Route element={<Home />} path="/" />
                         <Route element={<Demo />} path="/demo" />
