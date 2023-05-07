@@ -3,12 +3,13 @@ import {
     Chart as ChartJS,
     CategoryScale,
     LinearScale,
-    BarElement,
+    BarElement, ArcElement,
     Title,
     Tooltip,
     Legend,
   } from 'chart.js';
-import { Bar } from 'react-chartjs-2';
+import { Bar, Pie } from 'react-chartjs-2';
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 ChartJS.register(
     CategoryScale,
@@ -19,7 +20,7 @@ ChartJS.register(
     Legend
   );
 
-export const data = {
+export const barData = {
     labels: ['Enero', 'Febrero', 'Marzo', 'Abril'],
     datasets: [
       {
@@ -54,8 +55,32 @@ export const options = {
   },
 };
 
+export const pieData = {
+  labels: ['Ingresos', 'Gastos'],
+  datasets: [
+    {
+      label: 'Ingresos vs Gastos',
+      data: [1800, 1200],
+      backgroundColor: [
+        'rgb(0, 143, 57)',
+        'rgb(203, 50, 52)',
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+      ],
+      borderWidth: 1,
+    },
+  ],
+};
+
 export const Principal =()=>{
     return (
-        <Bar options={options} data={data} />
+      <>
+        <Pie data={pieData} />
+        <Bar options={options} data={barData} />
+      </>
     )
 }
+
+

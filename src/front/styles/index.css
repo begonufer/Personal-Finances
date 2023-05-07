@@ -7,4 +7,5 @@
 .main-body{
     display: flex;
     height: 80vh;
+    width: calc(100vw-280px);
 }

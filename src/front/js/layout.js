@@ -20,6 +20,7 @@ import {Addincome} from"./pages/addincome";
 import {Addfixedexpense} from"./pages/addfixedexpense";
 import {Addvariableexpense} from"./pages/addvariableexpense";
 import {Principal} from"./pages/principal";
+import {Expenses} from"./pages/expenses";
 
 
 import { Navbar } from "./component/navbar";
@@ -40,27 +41,28 @@ const Layout = () => {
                 <ScrollToTop>
                     <Navbar />
                     <div className="main-body">
-                    <Sidebar />
-                    <Routes>
-                        <Route element={<Login />} path="/login" />
-                        <Route element={<Signup />} path="/signup" />
-                        <Route element={<Income />} path="/income" />
-                        <Route element={<FixedExpense />} path="/fixedexpense" />
-                        <Route element={<VariableExpense />} path="/variableexpense" />
-                        <Route element={<User />} path="/user" />
-                        <Route element={<Cartera />} path="/cartera" />
-                        <Route element={<Totalincomes />} path="/totalincomes" />
-                        <Route element={<Totalexpenses />} path="/totalexpenses" />
-                        <Route element={<Addincome />} path="/addincome" />
-                        <Route element={<Addfixedexpense />} path="/addfixedexpense" />
-                        <Route element={<Addvariableexpense />} path="/addvariableexpense" />
-                        <Route element={<Principal />} path="/principal" />
-                    
-                        <Route element={<Home />} path="/" />
-                        <Route element={<Demo />} path="/demo" />
-                        <Route element={<Single />} path="/single/:theid" />
-                        <Route element={<h1>Not found!</h1>} />
-                    </Routes>
+                        <Sidebar />
+                        <Routes>
+                            <Route element={<Login />} path="/login" />
+                            <Route element={<Signup />} path="/signup" />
+                            <Route element={<Income />} path="/income" />
+                            <Route element={<FixedExpense />} path="/fixedexpense" />
+                            <Route element={<VariableExpense />} path="/variableexpense" />
+                            <Route element={<User />} path="/user" />
+                            <Route element={<Cartera />} path="/cartera" />
+                            <Route element={<Totalincomes />} path="/totalincomes" />
+                            <Route element={<Totalexpenses />} path="/totalexpenses" />
+                            <Route element={<Addincome />} path="/addincome" />
+                            <Route element={<Addfixedexpense />} path="/addfixedexpense" />
+                            <Route element={<Addvariableexpense />} path="/addvariableexpense" />
+                            <Route element={<Principal />} path="/principal" />
+                            <Route element={<Expenses />} path="/expenses" />
+
+                            <Route element={<Home />} path="/" />
+                            <Route element={<Demo />} path="/demo" />
+                            <Route element={<Single />} path="/single/:theid" />
+                            <Route element={<h1>Not found!</h1>} />
+                        </Routes>
                     </div>
                     <Footer />
                 </ScrollToTop>
