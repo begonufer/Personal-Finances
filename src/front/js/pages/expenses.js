@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 export const Expenses =()=>{
     return (
         <>este es el Expense carajo
-            <li className="dropdown">
-                <a href="#" className="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                    <strong>Añade un gasto</strong>
-                </a>
+            <div className="dropdown">
+                <button  href="#" className="btn btn-success d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+                    Añadir un gasto
+                </button>
                 <ul className="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
                     <li className="dropdown-item">
                         <Link to="/addvariableexpense">
@@ -20,7 +20,7 @@ export const Expenses =()=>{
                         </Link>
                     </li>
                 </ul>
-            </li>
+            </div>
         </>
     )
 }
