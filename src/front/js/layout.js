@@ -40,6 +40,7 @@ const Layout = () => {
         <div className="h-100 d-inline">
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
+                    
                     <div className="main-body">
                         <Sidebar />
                         <Routes>

@@ -12,24 +12,27 @@ export const Sidebar = () => {
                         <span className="conmo w-100 text-center fs-1">CONMO</span>
                     </a>
                     <a href="/income" className="align-middle px-4 text-decoration-none">
-                        <i class="fa-solid fa-landmark"> </i> <span className="ms-1 d-none d-sm-inline">Ingresos</span>
+                        <i className="fa-solid fa-landmark"> </i> <span className="ms-1 d-none d-sm-inline">Ingresos</span>
                     </a>
-                    <a href="/expenses" onClick="()=>{ setIsVisible(true) }" className="align-middle px-4 text-decoration-none">
-                        <i class="fa-solid fa-receipt"> </i> <span className="ms-1 d-none d-sm-inline">Gastos</span>
+                    <a href="/expenses" onClick={()=> setIsVisible(true) } className="align-middle px-4 text-decoration-none">
+                        <i className="fa-solid fa-receipt"> </i> <span className="ms-1 d-none d-sm-inline">Gastos</span>
                     </a>
+                    
+                </div>
+                {isVisible && (<>
                     <a href="/fixedexpense" className="align-middle px-4 text-decoration-none">
-                        <i class="fa-solid fa-circle-dollar-to-slot"> </i> <span className="ms-1 d-none d-sm-inline">Fijos</span>
+                        <i className="fa-solid fa-circle-dollar-to-slot"> </i> <span className="ms-1 d-none d-sm-inline">Fijos</span>
                     </a>
                     <a href="/variableexpense" className="align-middle px-4 text-decoration-none">
-                        <i class="fa-solid fa-cash-register"></i> <span className="ms-1 d-none d-sm-inline">Variables</span>
+                        <i className="fa-solid fa-cash-register"></i> <span className="ms-1 d-none d-sm-inline">Variables</span>
                     </a>
-                </div>
+                </>)}
                 <div className="bd-highlight d-flex flex-column align-items-center align-items-sm-start px-3 py-5 text-white w-100">
                     <a href="/user" className="align-middle px-4 text-decoration-none">
-                        <i class="fa-solid fa-gear"></i> <span className="ms-1 d-none d-sm-inline">Configuración</span>
+                        <i className="fa-solid fa-gear"></i> <span className="ms-1 d-none d-sm-inline">Configuración</span>
                     </a>
                     <a href="/" className="align-middle px-4 text-decoration-none">
-                        <i class="fa-solid fa-right-from-bracket"></i> <span className="ms-1 d-none d-sm-inline">Sign out</span>
+                        <i className="fa-solid fa-right-from-bracket"></i> <span className="ms-1 d-none d-sm-inline">Sign out</span>
                     </a>
                 </div>
             </div>
