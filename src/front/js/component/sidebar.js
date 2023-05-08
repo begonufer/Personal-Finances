@@ -1,46 +1,40 @@
-import React from "react";
+import React , {useState} from "react";
 import { Link } from "react-router-dom";
 
 export const Sidebar = () => {
+    const [isVisible, setIsVisible] = useState (false);
+
 	return (
-        <div className="sidebar d-flex flex-column flex-shrink-0 p-3 bg-light">
-            <a href="/principal" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-                <span className="fs-4">Conmo</span>
-            </a>
-            <ul className="nav nav-pills flex-column mb-auto">
-                <li className="nav-item">
-                    <Link to="/income">
-						<button className="btn btn-primary">Ingresos</button>
-					</Link>
-                </li>
-                <li className="nav-item">
-                    <Link to="/expenses">
-						<button className="btn btn-primary">Gastos</button>
-					</Link>
-                </li>
-                <li className="nav-item">
-                    <Link to="/fixedexpense">
-		    	        <button className="btn btn-primary">Gastos Fijos</button>
-		            </Link>
-                </li>
-                <li className="nav-item">
-                    <Link to="/variableexpense">
-				        <button className="btn btn-primary">Gastos Variables</button>
-    	            </Link>
-                </li>
-            </ul>
-            <div className="dropdown">
-                <a href="#" className="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                    <strong>Configuración</strong>
-                </a>
-                <ul className="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-                    <li><a className="dropdown-item" href="#">Settings</a></li>
-                    <li><a className="dropdown-item" href="#">Sign out</a></li>
-                </ul>
+        <div className="sidebar col-auto col-md-3 col-xl-2 px-sm-2 px-0 h-100">
+            <div className="d-flex align-content-between flex-column bd-highlight mb-3">
+                <div className="mb-auto bd-highlight d-flex gap-4 flex-column align-items-center align-items-sm-start px-3 py-5 text-white w-100">
+                    <a href="/principal" className="d-flex align-middle align-items-center mb-5 w-100 text-decoration-none">
+                        <span className="conmo w-100 text-center fs-1">CONMO</span>
+                    </a>
+                    <a href="/income" className="align-middle px-4 text-decoration-none">
+                        <i class="fa-solid fa-landmark"> </i> <span className="ms-1 d-none d-sm-inline">Ingresos</span>
+                    </a>
+                    <a href="/expenses" onClick="()=>{ setIsVisible(true) }" className="align-middle px-4 text-decoration-none">
+                        <i class="fa-solid fa-receipt"> </i> <span className="ms-1 d-none d-sm-inline">Gastos</span>
+                    </a>
+                    <a href="/fixedexpense" className="align-middle px-4 text-decoration-none">
+                        <i class="fa-solid fa-circle-dollar-to-slot"> </i> <span className="ms-1 d-none d-sm-inline">Fijos</span>
+                    </a>
+                    <a href="/variableexpense" className="align-middle px-4 text-decoration-none">
+                        <i class="fa-solid fa-cash-register"></i> <span className="ms-1 d-none d-sm-inline">Variables</span>
+                    </a>
+                </div>
+                <div className="bd-highlight d-flex flex-column align-items-center align-items-sm-start px-3 py-5 text-white w-100">
+                    <a href="/user" className="align-middle px-4 text-decoration-none">
+                        <i class="fa-solid fa-gear"></i> <span className="ms-1 d-none d-sm-inline">Configuración</span>
+                    </a>
+                    <a href="/" className="align-middle px-4 text-decoration-none">
+                        <i class="fa-solid fa-right-from-bracket"></i> <span className="ms-1 d-none d-sm-inline">Sign out</span>
+                    </a>
+                </div>
             </div>
         </div>
 	);
 };
-
 
 

@@ -1,11 +1,40 @@
 /* 
     General Styles used on every website (Don't Repeat Yourself)
 */
-.sidebar {
-    width: 280px;
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    background-color: rgba(40, 124, 147, 0.162);
 }
+
+.conmo {
+    font-family: 'Righteous', cursive;
+    color:white;
+    padding: 10px;
+}
+
+.sidebar {
+    width: 250px;
+    height: 100vw;
+    background-color: rgb(40, 124, 147);
+}
+
+.sidebar button {
+    height: 3rem;
+    width: 100%;
+}
+
+a {
+    height: 5rem;
+    width: 100%;
+    padding: 10px;
+    color: white;
+    font-size: large;
+}
+
 .main-body{
     display: flex;
-    height: 80vh;
+    height: 100vh;
     width: calc(100vw-280px);
 }
+
