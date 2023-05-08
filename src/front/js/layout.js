@@ -21,6 +21,7 @@ import {Addfixedexpense} from"./pages/addfixedexpense";
 import {Addvariableexpense} from"./pages/addvariableexpense";
 import {Principal} from"./pages/principal";
 import {Expenses} from"./pages/expenses";
+import {LandingPage} from"./pages/landingpage";
 
 
 import { Navbar } from "./component/navbar";
@@ -36,10 +37,9 @@ const Layout = () => {
     if(!process.env.BACKEND_URL || process.env.BACKEND_URL == "") return <BackendURL/ >;
 
     return (
-        <div>
+        <div className="h-100 d-inline">
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
-                    <Navbar />
                     <div className="main-body">
                         <Sidebar />
                         <Routes>
@@ -57,6 +57,7 @@ const Layout = () => {
                             <Route element={<Addvariableexpense />} path="/addvariableexpense" />
                             <Route element={<Principal />} path="/principal" />
                             <Route element={<Expenses />} path="/expenses" />
+                            <Route element={<LandingPage />} path="/" />
 
                             <Route element={<Home />} path="/" />
                             <Route element={<Demo />} path="/demo" />
@@ -64,7 +65,6 @@ const Layout = () => {
                             <Route element={<h1>Not found!</h1>} />
                         </Routes>
                     </div>
-                    <Footer />
                 </ScrollToTop>
             </BrowserRouter>
         </div>
