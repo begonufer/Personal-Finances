@@ -22,12 +22,16 @@ ChartJS.register(
   );
 
 export const Income =()=>{
+
+ 
+
     return (
         
             <div className="wrap flex-column   w-100  m-3">
                 <div>
                     <h1 className="text-center">Ingresos</h1>
-                    <h5 className="text-center">Resumen mensual</h5>    
+                    <h5 className="text-center">Resumen mensual</h5>   
+                    <button>User</button> 
                 </div>
             <div className="d-flex  justify-content-center ">
                 <div>
