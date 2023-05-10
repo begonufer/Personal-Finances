@@ -8,7 +8,7 @@ export const Navbar = () => {
 			<div className="d-flex justify-content-between w-100">
 				<div className="">
 					<Link to="/">
-						<span className="navbar-brand mb-0 h1">€ONMO</span>
+						<span className="mb-0 h1">€ONMO</span>
 					</Link>
 						</div>	
 					<div>
