@@ -7,6 +7,46 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 		},
 		actions: {
+			setIncome: async (value,category,dateTime,description) => {
+				const response = await fetch (process.env.BACKEND_URL + "/api/user/login", {
+					method: "POST",
+					headers: {
+						"Content-Type":"application/json",
+					},
+					body: JSON.stringify({
+						email,
+						password,
+						name,
+						surname,
+						birthdate,
+						phone_number
+
+					})
+				})
+				const user = await response.json()
+				setStore({...getStore(), user})
+			},	
+
+			setnewUser: async (email, password,name,surname,birthdate,phone_number) => {
+				const response = await fetch (process.env.BACKEND_URL + "/api/user/", {
+					method: "POST",
+					headers: {
+						"Content-Type":"application/json",
+					},
+					body: JSON.stringify({
+						email,
+						password,
+						name,
+						surname,
+						birthdate,
+						phone_number
+
+					})
+				})
+				const newuser = await response.json()
+				setStore({...getStore(), newuser})
+			},	
+			
 			setUser: async (email, password) => {
 				const response = await fetch (process.env.BACKEND_URL + "/api/user/login", {
 					method: "POST",
@@ -20,11 +60,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 				const user = await response.json()
 				setStore({...getStore(), user})
-			},
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
+			},	
 
 			getMessage: async () => {
 				try{
@@ -54,6 +90,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			}
 		}
 	};
+	
 };
+
 
 export default getState;
