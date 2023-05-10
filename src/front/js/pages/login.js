@@ -11,7 +11,7 @@ export const Login =()=>{
                 <small id="passwordHelpBlock" class="form-text text-muted">
                     He olvidado mi contraseña
                 </small>
-                <button class="btn btn-success" type="submit">Aceptar</button>
+                <button class="btn btn-success" type="submit ">Aceptar</button>
             </form>
         </>
     )

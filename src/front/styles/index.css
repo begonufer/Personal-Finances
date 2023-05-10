@@ -13,6 +13,22 @@ body {
     padding: 10px;
 }
 
+.navbar {
+    background-color: rgb(40, 124, 147);
+    font-family: 'Righteous', cursive;
+    color:white;
+    padding: 10px;
+    height: 120px;
+   
+   
+}
+
+.principal{
+    display: flex;
+    width: 39vw;
+    margin-top: 50px;
+}
+
 .sidebar {
     width: 250px;
     height: 100vw;

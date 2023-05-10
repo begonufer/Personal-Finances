@@ -29,7 +29,7 @@ export const barData = {
         backgroundColor: 'rgb(0, 143, 57)',
       },
       {
-        label: 'Egresos',
+        label: 'Gastos',
         data: [1500,1300,1200,1000],
         backgroundColor: 'rgb(203, 50, 52)',
       },
@@ -41,7 +41,7 @@ export const options = {
   plugins: {
     title: {
       display: true,
-      text: 'Conmo',
+      text: 'Anual',
     },
   },
   responsive: true,
@@ -56,6 +56,7 @@ export const options = {
 };
 
 export const pieData = {
+  
   labels: ['Ingresos', 'Gastos'],
   datasets: [
     {
@@ -76,10 +77,10 @@ export const pieData = {
 
 export const Principal =()=>{
     return (
-      <>
+      <div className="principal">
         <Pie data={pieData} />
         <Bar options={options} data={barData} />
-      </>
+      </div>
     )
 }
 
