@@ -7,24 +7,62 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 		},
 		actions: {
-			setIncome: async (value,category,dateTime,description) => {
-				const response = await fetch (process.env.BACKEND_URL + "/api/user/login", {
+
+			setVariableexpense: async (value,category,dateTime,description) => {
+				const response = await fetch (process.env.BACKEND_URL + "/api/expense", {
 					method: "POST",
 					headers: {
 						"Content-Type":"application/json",
 					},
 					body: JSON.stringify({
-						email,
-						password,
-						name,
-						surname,
-						birthdate,
-						phone_number
+						value,
+						category,
+						dateTime,
+						description,
+						
 
 					})
 				})
-				const user = await response.json()
-				setStore({...getStore(), user})
+				const variableexpense = await response.json()
+				setStore({...getStore(), variableexpense})
+			},
+
+            setExpense: async (value,category,dateTime,description) => {
+				const response = await fetch (process.env.BACKEND_URL + "/api/expense", {
+					method: "POST",
+					headers: {
+						"Content-Type":"application/json",
+					},
+					body: JSON.stringify({
+						value,
+						category,
+						dateTime,
+						description,
+						
+
+					})
+				})
+				const expense = await response.json()
+				setStore({...getStore(), expense})
+			},
+
+			setIncome: async (value,category,dateTime,description) => {
+				const response = await fetch (process.env.BACKEND_URL + "/api/income", {
+					method: "POST",
+					headers: {
+						"Content-Type":"application/json",
+					},
+					body: JSON.stringify({
+						value,
+						category,
+						dateTime,
+						description,
+						
+
+					})
+				})
+				const income = await response.json()
+				setStore({...getStore(), income})
 			},	
 
 			setnewUser: async (email, password,name,surname,birthdate,phone_number) => {
