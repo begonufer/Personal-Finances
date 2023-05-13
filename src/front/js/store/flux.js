@@ -7,7 +7,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 		},
 		actions: {
-
 			setVariableexpense: async (value,category,dateTime,description) => {
 				const response = await fetch (process.env.BACKEND_URL + "/api/expense", {
 					method: "POST",
@@ -19,14 +18,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 						category,
 						dateTime,
 						description,
-						
-
 					})
 				})
 				const variableexpense = await response.json()
 				setStore({...getStore(), variableexpense})
 			},
-
             setExpense: async (value,category,dateTime,description) => {
 				const response = await fetch (process.env.BACKEND_URL + "/api/expense", {
 					method: "POST",
@@ -38,8 +34,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						category,
 						dateTime,
 						description,
-						
-
 					})
 				})
 				const expense = await response.json()
@@ -57,8 +51,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						category,
 						dateTime,
 						description,
-						
-
 					})
 				})
 				const income = await response.json()
@@ -78,7 +70,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						surname,
 						birthdate,
 						phone_number
-
 					})
 				})
 				const newuser = await response.json()

@@ -42,22 +42,22 @@ export const Signup =()=>{
         <>
             <form className="form vw-100 text-center mt-5">
                 <h1>Registro</h1>
-                <label for="inputName">Nombre</label>
+
                 <input type="text" onChange={(e)=>{updateName(e.target.value)}} id="inputName" className="form-control" aria-describedby="passwordHelpBlock" placeholder="Nombre"/>
-                <label for="inputSurname">Apellidos</label>
+
                 <input type="text" onChange={(e)=>{updateSurname(e.target.value)}} id="inputSurname" className="form-control" aria-describedby="passwordHelpBlock" placeholder="Apellidos"/>
-                <label for="inputBirthdate">Fecha de nacimiento</label>
+
                 <input type="text" onChange={(e)=>{updateBirthdate(e.target.value)}} id="inputBirthdate" className="form-control" aria-describedby="passwordHelpBlock" placeholder="Fecha de nacimiento"/>
-                <label for="inputPhoneNumber">Teléfono</label>
+
                 <input type="text"  onChange={(e)=>{updatePhone_number(e.target.value)}} id="inputPhoneNumber" className="form-control" aria-describedby="passwordHelpBlock" placeholder="Teléfono"/>
-                <label for="inputEmail">Email</label>
+
                 <input type="email" onChange={(e)=>{updateEmail(e.target.value)}} className="form-control" id="inputEmail" aria-describedby="passwordHelpBlock" placeholder="Email"/>
-                <label for="inputPassword">Contraseña</label>
+
                 <input type="password" onChange={(e)=>{updatePassword(e.target.value)}} id="inputPassword" className="form-control" aria-describedby="passwordHelpBlock" placeholder="Contraseña"/>
                 <small id="passwordHelpBlock" className="form-text text-muted">
                     Tu contraseña debe tener un mínimo de 8 carácteres, contener letras y números, y no puede contener espacios ni carácteres especiales.
                 </small>
-                {/* <input type="password" id="inputPasswordConfirm" className="form-control" aria-describedby="passwordHelpBlock" placeholder="Confirma contraseña"/> */}
+                <input type="password" id="inputPasswordConfirm" className="form-control" aria-describedby="passwordHelpBlock" placeholder="Confirma contraseña"/>
                 <button className="btn btn-success" type="submit" onClick={Signup}>Aceptar</button>
             </form>
         </>

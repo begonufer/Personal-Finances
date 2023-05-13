@@ -45,8 +45,6 @@ def login():
     access_token = create_access_token(identity=user.id)
     return jsonify({ "token": access_token, "user_id": user.id })
 
-
-
 #Esta ruta obtiene los ingresos
 @api.route('/income', methods=['GET'])
 @jwt_required()

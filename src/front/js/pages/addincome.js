@@ -41,14 +41,14 @@ export const Addincome =()=>{
                     </div>
                     <div className="form-group col-md-6">
                         <select onChange={(e)=>{updateCategory(e.target.value)}} id="inputState" className="form-control">
-                            <option selected>Selecciona una categoría</option>
+                            <option>Selecciona una categoría</option>
                             <option>Categoría 1</option>
                             <option>Categoría 2</option>
                             <option>Nueva categoría</option>
                         </select>
                     </div>
                     <div className="form-group col-md-2">
-                        <input type="text" class="form-control" onChange={(e)=>{updateValue(e.target.value)}} id="inputQuantity" placeholder="Importe"/>
+                        <input type="text" className="form-control" onChange={(e)=>{updateValue(e.target.value)}} id="inputQuantity" placeholder="Importe"/>
                     </div>
                 </div>
                 <Link to="/income">
