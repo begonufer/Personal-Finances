@@ -76,7 +76,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				})
 				const newuser = await response.json()
-				setStore({...getStore(), newuser})
+				setStore({...getStore(), user: newuser})
 			},	
 			
 			setUser: async (email, password) => {
@@ -92,21 +92,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 				const user = await response.json()
 				setStore({...getStore(), token:user.token, user})
-				console.log(getStore())
 			},	
 
-			getMessage: async () => {
-				try{
-					// fetching data from the backend
-					const resp = await fetch(process.env.BACKEND_URL + "/api/hello")
-					const data = await resp.json()
-					setStore({ message: data.message })
-					// don't forget to return something, that is how the async resolves
-					return data;
-				}catch(error){
-					console.log("Error loading message from backend", error)
-				}
-			},
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();

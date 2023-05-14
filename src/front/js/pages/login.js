@@ -14,10 +14,9 @@ export const Login =()=>{
         setPassword(passwordInputValue)
     }
 
-    const { store, actions } = useContext(Context);
+    const { actions } = useContext(Context);
     const login = async() => {
         await actions.setUser(email, password)
-        console.log(store.user)
     }
 
     return (
