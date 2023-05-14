@@ -2,8 +2,6 @@ import React , {useState} from "react";
 import { Link } from "react-router-dom";
 
 export const Sidebar = () => {
-    const [isVisible, setIsVisible] = useState (false);
-
 	return (
         <div className="sidebar col-auto col-md-3 col-xl-2 px-sm-2 px-0 h-100">
             <div className="d-flex align-content-between flex-column bd-highlight mb-3">
@@ -14,30 +12,26 @@ export const Sidebar = () => {
                     <a href="/income" className="align-middle px-4 text-decoration-none">
                         <i className="fa-solid fa-landmark"> </i> <span className="ms-1 d-none d-sm-inline">Ingresos</span>
                     </a>
-                    <a href="/expenses" onClick={()=> setIsVisible(true) } className="align-middle px-4 text-decoration-none">
+                    <a href="/expenses" className="align-middle px-4 text-decoration-none">
                         <i className="fa-solid fa-receipt"> </i> <span className="ms-1 d-none d-sm-inline">Gastos</span>
                     </a>
-                    
-                </div>
-                {isVisible && (<>
                     <a href="/fixedexpense" className="align-middle px-4 text-decoration-none">
                         <i className="fa-solid fa-circle-dollar-to-slot"> </i> <span className="ms-1 d-none d-sm-inline">Fijos</span>
                     </a>
                     <a href="/variableexpense" className="align-middle px-4 text-decoration-none">
                         <i className="fa-solid fa-cash-register"></i> <span className="ms-1 d-none d-sm-inline">Variables</span>
                     </a>
-                </>)}
-                <div className="bd-highlight d-flex flex-column align-items-center align-items-sm-start px-3 py-5 text-white w-100">
+                </div>
+                <div className="bottomconf d-flex flex-column align-items-center align-items-sm-start px-3 py-5 text-white w-100">
                     <a href="/user" className="align-middle px-4 text-decoration-none">
-                        <i className="fa-solid fa-gear"></i> <span className="ms-1 d-none d-sm-inline">Configuración</span>
+                        <i class="fa-solid fa-gear"></i> <span className="ms-1 d-none d-sm-inline">Configuración</span>
                     </a>
                     <a href="/" className="align-middle px-4 text-decoration-none">
-                        <i className="fa-solid fa-right-from-bracket"></i> <span className="ms-1 d-none d-sm-inline">Sign out</span>
+                        <i class="fa-solid fa-right-from-bracket"></i> <span className="ms-1 d-none d-sm-inline">Sign out</span>
                     </a>
                 </div>
             </div>
         </div>
 	);
 };
-
 

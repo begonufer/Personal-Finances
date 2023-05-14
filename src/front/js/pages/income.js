@@ -22,33 +22,26 @@ ChartJS.register(
   );
 
 export const Income =()=>{
-
- 
-
-    return (
-        
-            <div className="wrap flex-column   w-100  m-3">
-                <div>
-                    <h1 className="text-center">Ingresos</h1>
-                    <h5 className="text-center">Resumen mensual</h5>   
-                    <button>User</button> 
+  return (
+    <>
+            <div className="d-block flex-column justify-content-center w-100 h-100 m-5 align-items-center">
+                <h1 className="text-center">Ingresos</h1>
+                <h5 className="text-center">Resumen mensual</h5>
+                <Pie data={pieData} />
+                <Bar options={options} data={barData} />
+                <div className="d-block w-100 h-100 m-5 align-items-center">
+                    <a href="/totalincomes" id="totalizacion" className="text-center shadow align-middle align-items-center text-decoration-none">
+                        <span>Resumen de ingresos</span>
+                    </a>
                 </div>
-            <div className="d-flex  justify-content-center ">
-                <div>
-                <Link to="/totalincomes">
-                        <button className="btn btn-success rounded ">Resumen</button>
-                    </Link>
                 <Link to="/addincome">
-                        <button className="btn btn-success rounded">Añade un ingreso</button>
-                    </Link>
-                    <Pie data={pieData} />
-        <Bar options={options} data={barData} />
-                    </div>
-                    </div>
-                    </div>
-        
-    )
+                    <button type="button" className="btn btn-circle btn-xl"> <i className="fa-solid fa-plus"></i> </button>
+                </Link>
+            </div>
+    </>   
+  )
 }
+
 export const barData = {
     labels: ['Enero', 'Febrero', 'Marzo', 'Abril'],
     datasets: [
@@ -57,9 +50,8 @@ export const barData = {
         data: [1800,1600,1500,1200],
         backgroundColor: 'rgb(0, 255, 0)',
       },
-     
     ],
-  };  
+};  
 
 export const options = {
   plugins: {
@@ -97,5 +89,3 @@ export const pieData = {
     },
   ],
 };
-
-

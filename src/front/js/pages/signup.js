@@ -1,5 +1,6 @@
 import React, { useContext , useState } from "react";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 
 export const Signup =()=>{
     const [email,setEmail] = useState('');
@@ -59,6 +60,10 @@ export const Signup =()=>{
                 </small>
                 <input type="password" id="inputPasswordConfirm" className="form-control" aria-describedby="passwordHelpBlock" placeholder="Confirma contraseña"/>
                 <button className="btn btn-success" type="submit" onClick={Signup}>Aceptar</button>
+                <Link to="/">
+                    <button className="btn btn-success" type="submit">Atrás</button>                
+                </Link>
+                <span>¿Ya tienes cuenta? <a href="/login"> Entrar </a> </span>
             </form>
         </>
     )

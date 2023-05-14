@@ -3,28 +3,18 @@ import { Link } from "react-router-dom";
 
 export const Navbar = () => {
 	return (
-		<nav className="navbar  ">
-			
-			<div className="d-flex justify-content-between w-100">
-				<div className="">
-					<Link to="/">
-						<span className="mb-0 h1">€ONMO</span>
+		<nav className="navbar">
+			<div className="container">
+				<span className="conmo text-decoration-none text-center fs-2">CONMO</span>
+				<div className="ml-auto">
+					<Link to="/login">
+						<button className="btn btn-lg text-white fs-4">Iniciar sesión</button>
 					</Link>
-						</div>	
-					<div>
-						<Link to="/signup">
-							<button className="btn btn-light">Registrarse</button>
-						</Link>
-
-						<Link to="/login">
-						 	<button className="btn btn-light">Iniciar Sección</button>
-						</Link>
-							</div>
-				
-					
-					</div>
-				
-			
+					<Link to="/signup">
+						<button className="btn btn-lg text-white fs-4">Registrarse</button>
+					</Link>
+				</div>
+			</div>
 		</nav>
 	);
 };

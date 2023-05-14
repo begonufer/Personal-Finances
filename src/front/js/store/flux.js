@@ -4,7 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			user: {},
 			incomes: [],
 			expenses: [],
-
+			token: ""
 		},
 		actions: {
 			setVariableexpense: async (value,category,dateTime,description) => {
@@ -41,10 +41,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			setIncome: async (value,category,dateTime,description) => {
+				const store = getStore();
+				console.log(store)
 				const response = await fetch (process.env.BACKEND_URL + "/api/income", {
 					method: "POST",
 					headers: {
 						"Content-Type":"application/json",
+						"Authorization":`Bearer ${store.token}`
 					},
 					body: JSON.stringify({
 						value,
@@ -54,7 +57,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				})
 				const income = await response.json()
-				setStore({...getStore(), income})
+				setStore({...store, income})
 			},	
 
 			setnewUser: async (email, password,name,surname,birthdate,phone_number) => {
@@ -88,7 +91,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				})
 				const user = await response.json()
-				setStore({...getStore(), user})
+				setStore({...getStore(), token:user.token, user})
+				console.log(getStore())
 			},	
 
 			getMessage: async () => {

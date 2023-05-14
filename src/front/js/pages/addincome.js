@@ -7,32 +7,26 @@ export const Addincome =()=>{
     const [category, setCategory] = useState ('');
     const [dateTime, setDateTime] = useState ('');
     const [description, setDescription] = useState ('');
-
     const updateValue= (valueInputValue) => {
         setValue(valueInputValue)
     }
-
     const updateCategory= (categoryInputValue) => {
         setCategory(categoryInputValue)
     }
-
     const updateDateTime= (dateTimeInputValue) => {
         setDateTime(dateTimeInputValue)
     }
-
     const updateDescription= (descriptionInputValue) => {
         setDescription(descriptionInputValue)
     }
-
     const { store, actions } = useContext(Context);
     const addincome = async() => {
         await actions.setIncome(value,category,dateTime,description)
         console.log(store.Income)
     }
-
     return (
         <>
-            <form className="form vw-100 text-center mt-5">
+            <div className="form vw-100 text-center mt-5">
                 <h1>Ingreso</h1>
                 <h5>Añade tu primer ingreso</h5>
                 <div className="form-row">
@@ -55,7 +49,7 @@ export const Addincome =()=>{
                     <button className="btn btn-danger">Cancelar</button>
                 </Link>
                 <button type="submit" onClick={addincome} className="btn btn-primary">Añadir</button>
-            </form>
+            </div>
         </>
     )
 }

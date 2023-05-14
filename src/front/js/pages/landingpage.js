@@ -6,17 +6,15 @@ export const LandingPage = () => {
 		<>
 			<div className="d-block w-100 h-100">
 				<Navbar />
-				<div className="container">
-					<div>
-					<h1>
-						€ONMO
-					</h1>
+				<div className="bg-image justify-content-center align-items-center" id="landing">
+					<div className="row">
+						<div className="col-6 mt-5">
+							<h1 id="land" className="text-center">CONMO</h1>
+							<h3 className="land text-center">Control your money</h3>
+						</div>
 					</div>
-					<h2>€ONMO te ayuda a controlar tu dinero<br></br>
-						 y mejorar tu vida</h2>
 				</div>
 			</div>
-
 		</>
 	);
 };

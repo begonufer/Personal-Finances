@@ -5,6 +5,30 @@
 body {
     font-family: 'Quicksand', sans-serif;
     background-color: rgba(40, 124, 147, 0.162);
+    /* background: #8bc34a; este es el color verde */
+}
+
+h1 {
+    font-size: 5em;
+}
+
+#landing {
+	background-image: url('https://img.freepik.com/vector-premium/gestion-presupuestaria-control-financiero-personal-flujo-caja-gente-pequena-planificando-presupuesto-personal-linea-estilo-moderno-dibujos-animados-planos-ilustracion-vectorial-sobre-fondo-blanco_501813-1154.jpg?w=1800');
+	height: 100vh;
+}
+
+.land {
+	color:rgb(40, 124, 147);
+}
+
+#land {
+	font-family: 'Righteous', cursive;
+    color: rgb(40, 124, 147);
+    padding: 10px;
+}
+
+.navbar {
+	background: rgb(40, 124, 147);
 }
 
 .conmo {
@@ -13,32 +37,12 @@ body {
     padding: 10px;
 }
 
-.navbar {
-    background-color: rgb(40, 124, 147);
-    font-family: 'Righteous', cursive;
-    color:white;
-    padding: 10px;
-    height: 120px;
-   
-   
-}
-
-.principal{
-    display: flex;
-    width: 39vw;
-    margin-top: 50px;
-}
-
 .sidebar {
     width: 250px;
     height: 100vw;
     background-color: rgb(40, 124, 147);
 }
 
-.sidebar button {
-    height: 3rem;
-    width: 100%;
-}
 
 a {
     height: 5rem;
@@ -48,9 +52,166 @@ a {
     font-size: large;
 }
 
+.bottomconf {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+}
+
 .main-body{
     display: flex;
     height: 100vh;
     width: calc(100vw-280px);
 }
 
+.btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    border-radius: 100%;
+    font-size: 24px;
+    line-height: 1.33;
+    color: white;
+    background-color: rgb(40, 124, 147);
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+}
+
+#totalizacion {
+    background-color: rgba(40, 124, 147, 0.162);
+    position: relative;
+}
+
+
+
+
+
+
+
+
+
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+a {
+	outline: none !important;
+}
+
+.ms-nav-container {
+	position: relative;
+	width: 100%;
+	height: 100vh;
+}
+#ms-menu {
+	display: none;
+}
+.bg-change {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	transition: all .25s ease;
+}
+
+.ms-nav .ms-menu-toggle:checked ~ .bg-change {
+	width: 0px;
+	height: 0px;
+	transition: all .5s ease;
+}
+
+.ms-nav /* este posiciona el boton */ { 
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+}
+
+.ms-nav > .ms-main {
+	position: relative;
+}
+
+.ms-nav > .ms-li /* es la transicion de cierre */ {
+	position: absolute;
+	bottom: 10px;
+	right: 5px;
+	transition: bottom .5s ease;
+	z-index: 0;
+}
+
+.ms-nav .ms-menu-toggle:checked ~ .ms-li a {
+	box-shadow: 5px 5px 10px #33333387;
+}
+	.ms-nav .ms-menu-toggle:checked ~ .ms-li1 {
+		bottom: 150%;
+		transition: bottom .5s ease;
+	}
+
+	.ms-nav .ms-menu-toggle:checked ~ .ms-li2 {
+		bottom: 265%;
+		transition: bottom .6s ease;
+	}
+
+.ms-nav .ms-menu-toggle:checked ~ .ms-main span {
+	transform: rotate(-45deg);
+	transition: transform .35s ease;
+}
+
+.ms-nav .ms-menu-toggle ~ .ms-main span {
+	transition: transform .35s ease;
+	opacity: 1;
+}
+
+.ms-nav > .ms-main > a {
+	box-shadow: 0px 5px 10px #333333;
+}
+
+.ms-nav /*este modifica los botones desplegables*/ > li a {
+	font-size: 30px;
+    color: white;
+	background: rgb(40, 124, 147);
+	width: 70px;
+	height: 70px;
+	display: block;
+	border-radius: 100%;
+	position: relative;
+	text-align: center;
+}
+
+	.ms-nav > .ms-main a {
+		font-size: 40px;
+		color: white;
+		background: rgb(40, 124, 147);
+		width: 80px;
+    	height: 80px;
+		display: block;
+		border-radius: 100%;
+		position: relative;
+		text-align: center;
+		z-index: 19;
+	}
+		.ms-nav > li > a span {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			margin: auto;
+			height: 40px;
+			width: 40px;
+			opacity: 0;
+			z-index: 12;
+		}
+
+@keyframes border-bottom-animation {
+  0% {
+    top: 0px;
+  }
+  50% {
+    top: -13px;
+  }
+  100% {
+    top: 0px;
+  }
+}

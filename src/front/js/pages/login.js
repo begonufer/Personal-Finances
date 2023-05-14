@@ -1,5 +1,6 @@
 import React, { useContext , useState } from "react";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 
 export const Login =()=>{
     const [email, setEmail] = useState ('');
@@ -27,10 +28,14 @@ export const Login =()=>{
                 <input type="email" onChange={(e)=>{updateEmail(e.target.value)}} className="form-control" id="inputEmail" aria-describedby="passwordHelpBlock" placeholder="Email"/>
                 <label for="inputPassword">Contraseña</label>
                 <input type="password" onChange={(e)=>{updatePassword(e.target.value)}} id="inputPassword" class="form-control" aria-describedby="passwordHelpBlock" placeholder="Contraseña"/>
-                <small id="passwordHelpBlock" class="form-text text-muted">
+                <small id="passwordHelpBlock" className="form-text text-muted">
                     He olvidado mi contraseña
                 </small>
-                <button class="btn btn-success" onClick={login} >Aceptar</button>
+                <button className="btn btn-success" onClick={login} >Aceptar</button>
+                <Link to="/">
+                    <button className="btn btn-success" type="submit">Atrás</button>                
+                </Link>
+                <span>¿No tienes cuenta? <a href="/signup"> Regístrate </a> </span>
             </div>
         </>
     )
