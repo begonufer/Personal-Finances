@@ -26,7 +26,7 @@ export const Login =()=>{
                 <label for="inputEmail">Email</label>
                 <input type="email" onChange={(e)=>{updateEmail(e.target.value)}} className="form-control" id="inputEmail" aria-describedby="passwordHelpBlock" placeholder="Email"/>
                 <label for="inputPassword">Contraseña</label>
-                <input type="password" onChange={(e)=>{updatePassword(e.target.value)}} id="inputPassword" class="form-control" aria-describedby="passwordHelpBlock" placeholder="Contraseña"/>
+                <input type="password" onChange={(e)=>{updatePassword(e.target.value)}} id="inputPassword" className="form-control" aria-describedby="passwordHelpBlock" placeholder="Contraseña"/>
                 <small id="passwordHelpBlock" className="form-text text-muted">
                     He olvidado mi contraseña
                 </small>

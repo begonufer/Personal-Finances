@@ -29,7 +29,7 @@ def signup():
     user.name = request.json.get("name", None)
     user.surname = request.json.get("surname", None)
     user.birthdate = request.json.get("birthdate", None)
-    user.phone_number = request.json.get("phonenumber", None)
+    user.phone_number = request.json.get("phone_number", None)
     user.is_active = True
     db.session.add(user)
     db.session.commit()
@@ -52,6 +52,15 @@ def get_incomes():
     user_id = get_jwt_identity() 
     incomes = Income.query.filter_by(user_id=user_id).all()
     return jsonify([income.serialize() for income in incomes])
+
+@api.route('/logged', methods=['GET'])
+@jwt_required()
+def is_logged():
+    user_id = get_jwt_identity()
+    if user_id:
+        return jsonify({"Logged": True}), 200
+    else:
+        return jsonify({"Logged": False}), 401
 
 #Esta ruta va hacer usada para registrar ingresos.
 @api.route('/income', methods=['POST'])

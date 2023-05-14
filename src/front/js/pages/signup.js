@@ -59,7 +59,7 @@ export const Signup =()=>{
                     Tu contraseña debe tener un mínimo de 8 carácteres, contener letras y números, y no puede contener espacios ni carácteres especiales.
                 </small>
                 <input type="password" id="inputPasswordConfirm" className="form-control" aria-describedby="passwordHelpBlock" placeholder="Confirma contraseña"/>
-                <button className="btn btn-success" type="submit" onClick={Signup}>Aceptar</button>
+                <button className="btn btn-success" type="button" onClick={Signup}>Aceptar</button>
                 <Link to="/">
                     <button className="btn btn-success" type="submit">Atrás</button>                
                 </Link>

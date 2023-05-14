@@ -2,13 +2,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			user: {},
+			logged: false,
 			incomes: [],
 			expenses: [],
 			token: ""
 		},
 		actions: {
+			setLogged: (logged) => {
+				setStore({logged:logged})
+			},
+
 			setVariableexpense: async (value,category,dateTime,description) => {
-				const response = await fetch (process.env.BACKEND_URL + "/api/expense", {
+				const response = await fetch (process.env.BACKEND_URL + "api/expense", {
 					method: "POST",
 					headers: {
 						"Content-Type":"application/json",
@@ -24,7 +29,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({...getStore(), variableexpense})
 			},
             setExpense: async (value,category,dateTime,description) => {
-				const response = await fetch (process.env.BACKEND_URL + "/api/expense", {
+				const response = await fetch (process.env.BACKEND_URL + "api/expense", {
 					method: "POST",
 					headers: {
 						"Content-Type":"application/json",
@@ -43,7 +48,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			setIncome: async (value,category,dateTime,description) => {
 				const store = getStore();
 				console.log(store)
-				const response = await fetch (process.env.BACKEND_URL + "/api/income", {
+				const response = await fetch (process.env.BACKEND_URL + "api/income", {
 					method: "POST",
 					headers: {
 						"Content-Type":"application/json",
@@ -61,7 +66,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},	
 
 			setnewUser: async (email, password,name,surname,birthdate,phone_number) => {
-				const response = await fetch (process.env.BACKEND_URL + "/api/user/", {
+				const response = await fetch (process.env.BACKEND_URL + "api/user/", {
 					method: "POST",
 					headers: {
 						"Content-Type":"application/json",
@@ -80,7 +85,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},	
 			
 			setUser: async (email, password) => {
-				const response = await fetch (process.env.BACKEND_URL + "/api/user/login", {
+				const response = await fetch (process.env.BACKEND_URL + "api/user/login", {
 					method: "POST",
 					headers: {
 						"Content-Type":"application/json",
@@ -91,6 +96,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				})
 				const user = await response.json()
+				if (user.token){
+					localStorage.setItem('token', user.token)
+					getActions().setLogged(true)
+				}
+
 				setStore({...getStore(), token:user.token, user})
 			},	
 

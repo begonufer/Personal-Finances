@@ -8,6 +8,7 @@ class Expense(db.Model):
     dateTime = db.Column(db.DateTime(), unique=False, nullable=False)
     description = db.Column(db.String(80), nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user = db.relationship('User', backref='expense')
 
     def __repr__(self):
         return f'<Expense {self.value}>'

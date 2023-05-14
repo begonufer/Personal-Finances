@@ -24,10 +24,10 @@ export const Sidebar = () => {
                 </div>
                 <div className="bottomconf d-flex flex-column align-items-center align-items-sm-start px-3 py-5 text-white w-100">
                     <Link to="/user" className="align-middle px-4 text-decoration-none">
-                        <i class="fa-solid fa-gear"></i> <span className="ms-1 d-none d-sm-inline">Configuración</span>
+                        <i className="fa-solid fa-gear"></i> <span className="ms-1 d-none d-sm-inline">Configuración</span>
                     </Link>
                     <Link to="/" className="align-middle px-4 text-decoration-none">
-                        <i class="fa-solid fa-right-from-bracket"></i> <span className="ms-1 d-none d-sm-inline">Sign out</span>
+                        <i className="fa-solid fa-right-from-bracket"></i> <span className="ms-1 d-none d-sm-inline">Sign out</span>
                     </Link>
                 </div>
             </div>
