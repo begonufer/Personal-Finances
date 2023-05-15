@@ -2,35 +2,45 @@ import React from "react";
 export const User =()=>{
     return (
         <>            
-            <form>
+        
+        
+            <form className="form1">
+            <h2 className="text-center fw-bold">TU CUENTA CONMO</h2><br></br>
                 <div className="form-row">
-                    <div className="form-group">
-                        <label for="inputNombre">Nombre</label>
+                    <div className="form-group ">
+                    <span class="col-md-1 col-md-offset-2 "><i class="fa fa-user bigicon"></i></span>
+                        <label htmlFor="inputNombre">Nombre</label>
                         <input type="text" className="form-control" id="inputNombre" />
                     </div>
-                    <div className="form-group">
-                        <label for="inputApellidos">Apellidos</label>
+                    <div className="form-group ">
+                    <span class="col-md-1 col-md-offset-2 "><i class="fa fa-user bigicon"></i></span>
+                        <label htmlFor="inputApellidos">Apellidos</label>
                         <input type="text" className="form-control" id="inputApellidos" />
                     </div>
-                    <div className="form-group">
-                        <label for="inputFechadenacimiento">Fecha de nacimiento</label>
+                    <div className="form-group ">
+                    <span class="col-md-1 col-md-offset-2 "><i class="fa-solid fa-cake-candles bigicon"></i></span>
+                        <label htmlFor="inputFechadenacimiento">Fecha de nacimiento</label>
                         <input type="text" className="form-control" id="inputFechadenacimiento" />
                     </div>
-                    <div className="form-group">
-                        <label for="Teléfono">Teléfono</label>
+                    <div className="form-group ">
+                    <span class="col-md-1 col-md-offset-2 "><i class="fa fa-phone-square bigicon"></i></span>
+                        <label htmlFor="Teléfono">Teléfono</label>
                         <input type="text" className="form-control" id="telefono" />
                     </div>
-                    <div className="form-group col-md-6">
-                        <label for="inputEmail4">Email</label>
+                    <div className="form-group  ">
+                    <span class="col-md-1 col-md-offset-2 "><i class="fa-solid fa-at bigicon"></i></span>
+                        <label htmlFor="inputEmail4">Email</label>
                         <input type="email" className="form-control" id="inputEmail4" />
                     </div>
-                    <div className="form-group col-md-6">
-                        <label for="inputContraseña">Contraseña</label>
+                    <div className="form-group  ">
+                    <span class="col-md-1 col-md-offset-2 "><i class="fa-solid fa-key bigicon"></i></span>
+                        <label htmlFor="inputContraseña">Contraseña</label>
                         <input type="password" className="form-control" id="inputContraseña" />
                     </div>
                 </div>
-                <button type="submit" className="btn btn-primary">Guardar</button>
-            </form>
+                <br></br>
+                <button type="submit" className="btn btn-info text-white">Guardar</button>
+            </form> 
         </>
     )
 }

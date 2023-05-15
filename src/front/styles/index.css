@@ -8,6 +8,27 @@ body {
     /* background: #8bc34a; este es el color verde */
 }
 
+.form1{
+	transform: rotate(1turn);
+	font-family: 'Righteous', cursive;
+	color:  rgb(40, 124, 147);
+	width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.bigicon {
+    font-size: 15px;
+    color:  rgb(40, 124, 147);
+	margin-right: 2px;
+}
+
 h1 {
     font-size: 5em;
 }
