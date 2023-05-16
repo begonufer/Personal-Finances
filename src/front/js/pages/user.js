@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 export const User =()=>{
     return (
         <>            
@@ -39,7 +40,12 @@ export const User =()=>{
                     </div>
                 </div>
                 <br></br>
-                <button type="submit" className="btn btn-info text-white">Guardar</button>
+                <div>
+                <button type="submit" className="btn btn-info text-white rounded">Guardar</button>
+                <Link to="/principal" >  
+                <button className="btn btn-info text-white rounded">Volver</button>
+                </Link>
+                </div>
             </form> 
         </>
     )

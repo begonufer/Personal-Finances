@@ -8,8 +8,9 @@ body {
     /* background: #8bc34a; este es el color verde */
 }
 
+
 .form1{
-	transform: rotate(1turn);
+	background-image: url(https://blog.cualessontusmetas.com/wp-content/uploads/2018/06/errores-finanzas-personales-1.jpg);
 	font-family: 'Righteous', cursive;
 	color:  rgb(40, 124, 147);
 	width: 100%;
