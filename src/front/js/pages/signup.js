@@ -48,7 +48,7 @@ export const Signup =()=>{
 
                 <input type="text" onChange={(e)=>{updateSurname(e.target.value)}} id="inputSurname" className="form-control" aria-describedby="passwordHelpBlock" placeholder="Apellidos"/>
 
-                <date type="date" onChange={(e)=>{updateBirthdate(e.target.value)}} id="inputBirthdate" className="form-control" aria-describedby="passwordHelpBlock" placeholder="Fecha de nacimiento"/>
+                <date type="text" onChange={(e)=>{updateBirthdate(e.target.value)}} id="inputBirthdate" className="form-control" aria-describedby="passwordHelpBlock" placeholder="Fecha de nacimiento"/>
 
                 <input type="text"  onChange={(e)=>{updatePhone_number(e.target.value)}} id="inputPhoneNumber" className="form-control" aria-describedby="passwordHelpBlock" placeholder="Teléfono"/>
 
