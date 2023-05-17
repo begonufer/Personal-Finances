@@ -17,6 +17,14 @@ h1 {
 	height: 100vh;
 }
 
+/* #login {
+	background-image: url('https://img.freepik.com/vector-premium/gestion-presupuestaria-control-financiero-personal-flujo-caja-gente-pequena-planificando-presupuesto-personal-linea-estilo-moderno-dibujos-animados-planos-ilustracion-vectorial-sobre-fondo-blanco_501813-1154.jpg?w=1800');
+	height: 100vh;
+} */
+P {
+	color: rgb(199, 225, 153);
+}
+
 .land {
 	color:rgb(40, 124, 147);
 }
@@ -42,7 +50,6 @@ h1 {
     height: 100vw;
     background-color: rgb(40, 124, 147);
 }
-
 
 a {
     height: 5rem;
@@ -81,6 +88,132 @@ a {
 #totalizacion {
     background-color: rgba(40, 124, 147, 0.162);
     position: relative;
+}
+
+#fondo {
+	background-color: rgb(40, 124, 147);
+}
+
+#fondoizq {
+	background-color: rgb(40, 124, 147, 0.564);
+}
+
+#botoningreso {
+    background-color: rgb(33, 107, 127);
+}
+
+#inputEmail {
+	font-size: 1.3em;
+    outline: none;
+	background-color: rgb(40, 124, 147);
+	color: white;
+}
+
+#inputEmail::placeholder {
+	font-size: 1.3em;
+	color:white;
+}
+
+#inputPassword {
+	font-size: 1.3em;
+	outline: none;
+	background-color: rgb(40, 124, 147);
+	color: white;
+}
+
+#inputPassword::placeholder {
+	font-size: 1.3em;
+	color:white;
+}
+
+input {
+	font-size: 1.3em;
+	outline: none;
+	background-color: rgba(40, 124, 147, 0);
+	color: white;
+}
+
+input::placeholder {
+	font-size: 1.3em;
+	color:white;
+}
+
+select option{
+	font-size: 1.3em;
+	outline: none;
+	background-color: rgba(40, 124, 147, 0);
+	color: white;
+}
+
+select option::placeholder {
+	font-size: 1.3em;
+	color:rgb(40, 124, 147);
+}
+
+#inputDate {
+	border-bottom-color: rgb(40, 124, 147);
+	border-top: none;
+	border-left: none;
+	border-right: none;
+}
+
+#inputDate::placeholder {
+	color: rgb(40, 124, 147);
+	text-align: center;
+}
+
+#inputQuantity {
+	border-bottom-color: rgb(40, 124, 147);
+	border-top: none;
+	border-left: none;
+	border-right: none;
+}
+
+#inputQuantity::placeholder {
+	color: rgb(40, 124, 147);
+	text-align: center;
+}
+
+#inputCategory {
+	font-size: 1.7em;
+	outline: none;
+	background-color: rgba(40, 124, 147, 0);
+	color: rgb(40, 124, 147);
+	border-bottom-color: rgb(40, 124, 147);
+	border-top: none;
+	border-left: none;
+	border-right: none;
+}
+
+#inputCategory::placeholder {
+	color: rgb(40, 124, 147);
+	font-size: 1em;
+	text-align: center;
+}
+
+#inputCategory option::placeholder {
+	font-size: 1em;
+	color:rgb(40, 124, 147);	
+	background-color: rgba(40, 124, 147, 0);
+}
+
+#inputCategory option{
+	font-size: 1em;
+	outline: none;
+	background-color: rgba(40, 124, 147, 0);
+	color:rgb(40, 124, 147);	
+}
+
+#inputPercentage {
+	border-bottom-color: rgb(40, 124, 147);
+	border-top: none;
+	border-left: none;
+	border-right: none;
+}
+
+#inputPercentage::placeholder {
+	color: rgb(40, 124, 147);
+	text-align: center;
 }
 
 
