@@ -66,7 +66,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},	
 
 			setnewUser: async (email, password,name,surname,birthdate,phone_number) => {
-				const response = await fetch (process.env.BACKEND_URL + "api/user/", {
+				const response = await fetch (process.env.BACKEND_URL + "api/user", {
 					method: "POST",
 					headers: {
 						"Content-Type":"application/json",
