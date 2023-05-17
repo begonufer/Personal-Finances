@@ -2,51 +2,28 @@ import React from "react";
 import { Link } from "react-router-dom";
 export const User =()=>{
     return (
-        <>            
-        
-        
-            <form className="form1">
-            <h2 className="text-center fw-bold">TU CUENTA CONMO</h2><br></br>
-                <div className="form-row">
-                    <div className="form-group ">
-                    <span class="col-md-1 col-md-offset-2 "><i class="fa fa-user bigicon"></i></span>
-                        <label htmlFor="inputNombre">Nombre</label>
-                        <input type="text" className="form-control" id="inputNombre" />
-                    </div>
-                    <div className="form-group ">
-                    <span class="col-md-1 col-md-offset-2 "><i class="fa fa-user bigicon"></i></span>
-                        <label htmlFor="inputApellidos">Apellidos</label>
-                        <input type="text" className="form-control" id="inputApellidos" />
-                    </div>
-                    <div className="form-group ">
-                    <span class="col-md-1 col-md-offset-2 "><i class="fa-solid fa-cake-candles bigicon"></i></span>
-                        <label htmlFor="inputFechadenacimiento">Fecha de nacimiento</label>
-                        <input type="text" className="form-control" id="inputFechadenacimiento" />
-                    </div>
-                    <div className="form-group ">
-                    <span class="col-md-1 col-md-offset-2 "><i class="fa fa-phone-square bigicon"></i></span>
-                        <label htmlFor="Teléfono">Teléfono</label>
-                        <input type="text" className="form-control" id="telefono" />
-                    </div>
-                    <div className="form-group  ">
-                    <span class="col-md-1 col-md-offset-2 "><i class="fa-solid fa-at bigicon"></i></span>
-                        <label htmlFor="inputEmail4">Email</label>
-                        <input type="email" className="form-control" id="inputEmail4" />
-                    </div>
-                    <div className="form-group  ">
-                    <span class="col-md-1 col-md-offset-2 "><i class="fa-solid fa-key bigicon"></i></span>
-                        <label htmlFor="inputContraseña">Contraseña</label>
-                        <input type="password" className="form-control" id="inputContraseña" />
+        <> 
+            <div id="login" className="w-100 h-100">
+                <div className="row">
+                    <h1 className="text-center text-white p-5" id="fondoizq">Configuración</h1>                     
+                </div>
+                <div className="m-3 row justify-content-center align-items-center">
+                    <div className="col-8 p-5 text-center rounded" id="fondo">
+                        <div className="mt-5">
+                            <input type="text" id="inputName" className="w-100 my-3 border-0 border-bottom border-color-light rounded-0" aria-describedby="passwordHelpBlock" placeholder="Nombre"/>
+                            <input type="text" id="inputSurname" className="w-100 my-3 border-0 border-bottom border-color-light rounded-0" aria-describedby="passwordHelpBlock" placeholder="Apellidos"/>
+                            <input type="text" id="inputBirthdate" className="w-100 my-3 border-0 border-bottom border-color-light rounded-0" aria-describedby="passwordHelpBlock" placeholder="Fecha de nacimiento"/>
+                            <input type="text" id="inputPhoneNumber" className="w-100 my-3 border-0 border-bottom border-color-light rounded-0" aria-describedby="passwordHelpBlock" placeholder="Teléfono"/>
+                            <input type="email" id="inputEmail" className="w-100 my-3 border-0 border-bottom border-color-light rounded-0" aria-describedby="passwordHelpBlock" placeholder="Email"/>
+                            <input type="password" id="inputPassword" className="w-100 my-3 border-0 border-bottom border-color-light rounded-0" aria-describedby="passwordHelpBlock" placeholder="Contraseña"/>
+                        </div>
+                        <div className="ml-auto">
+                            <button id="botoningreso" className="btn btn-lg mt-5 mb-3 mx-4 text-white fs-4">Cancelar</button>
+                            <button id="botoningreso" className="btn btn-lg mt-5 mb-3 mx-4 text-white fs-4">Aceptar</button>
+                        </div>
                     </div>
                 </div>
-                <br></br>
-                <div>
-                <button type="submit" className="btn btn-info text-white rounded">Guardar</button>
-                <Link to="/principal" >  
-                <button className="btn btn-info text-white rounded">Volver</button>
-                </Link>
-                </div>
-            </form> 
+            </div>
         </>
     )
 }

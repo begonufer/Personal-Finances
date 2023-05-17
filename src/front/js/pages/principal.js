@@ -26,12 +26,14 @@ export const barData = {
       {
         label: 'Ingresos',
         data: [1800,1600,1500,1200],
-        backgroundColor: 'rgb(0, 143, 57)',
+        backgroundColor: [
+          'rgb(87, 165, 196)',
+        ],
       },
       {
         label: 'Gastos',
         data: [1500,1300,1200,1000],
-        backgroundColor: 'rgb(203, 50, 52)',
+        backgroundColor: 'rgb(177, 210, 152)',
       },
       
     ],
@@ -61,26 +63,41 @@ export const pieData = {
   datasets: [
     {
       label: 'Ingresos vs Gastos',
-      data: [1800, 1200],
+      data: [1800, 1200, 1293],
       backgroundColor: [
-        'rgb(0, 143, 57)',
-        'rgb(203, 50, 52)',
+        'rgb(87, 165, 196)',
+        'rgb(177, 210, 152)',
+        'rgb(199, 225, 153)',
       ],
       borderColor: [
         'rgba(255, 99, 132, 1)',
         'rgba(54, 162, 235, 1)',
       ],
-      borderWidth: 1,
+      borderWidth: 0,
     },
   ],
 };
 
 export const Principal =()=>{
     return (
-      <div className="principal">
-        <Pie data={pieData} />
-        <Bar options={options} data={barData} />
-      </div>
+      <>
+            <div id="login" className="w-100 h-100">
+                <div className="row">
+                    <h1 className="text-center text-white p-5" id="fondoizq">Mi<span className="conmo"> CONMO</span></h1>                     
+                </div>
+                <div className="row justify-content-center align-items-center">
+                    <div className="col-5 p-5 m-5 text-center">
+                        <div className="row mt-5">
+                          <Pie data={pieData} />
+                        </div>
+                    </div>
+                    <div className="col-5 justify-content-center align-items-center mt-5 mb-4">
+                      <Bar options={options} data={barData} />
+                    </div>
+                </div>
+            </div>     
+      </>
+
     )
 }
 

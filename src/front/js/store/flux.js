@@ -100,9 +100,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					localStorage.setItem('token', user.token)
 					getActions().setLogged(true)
 				}
-
 				setStore({...getStore(), token:user.token, user})
-			},	
+			},
 
 			changeColor: (index, color) => {
 				//get the store

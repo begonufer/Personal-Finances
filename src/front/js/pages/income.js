@@ -24,11 +24,20 @@ ChartJS.register(
 export const Income =()=>{
   return (
     <>
-            <div className="d-block flex-column justify-content-center w-100 h-100 m-5 align-items-center">
-                <h1 className="text-center">Ingresos</h1>
-                <h5 className="text-center">Resumen mensual</h5>
-                <Pie data={pieData} />
-                <Bar options={options} data={barData} />
+            <div id="login" className="w-100 h-100">
+                <div className="row">
+                    <h1 className="text-center text-white p-5" id="fondoizq">Ingresos</h1>                  
+                </div>
+                <div className="row justify-content-center align-items-center">
+                    <div className="col-5 p-5 m-5 text-center">
+                        <div className="row mt-5">
+                          <Pie data={pieData} />
+                        </div>
+                    </div>
+                    <div className="col-5 justify-content-center align-items-center mt-5 mb-4">
+                      <Bar options={options} data={barData} />
+                    </div>
+                </div>
                 <div className="d-block w-100 h-100 m-5 align-items-center">
                     <a href="/totalincomes" id="totalizacion" className="text-center shadow align-middle align-items-center text-decoration-none">
                         <span>Resumen de ingresos</span>
@@ -37,7 +46,7 @@ export const Income =()=>{
                 <Link to="/addincome">
                     <button type="button" className="btn btn-circle btn-xl"> <i className="fa-solid fa-plus"></i> </button>
                 </Link>
-            </div>
+            </div> 
     </>   
   )
 }
@@ -76,16 +85,17 @@ export const pieData = {
   datasets: [
     {
       label: 'Ingresos vs Gastos',
-      data: [1800, 1200],
+      data: [1847, 3672, 1200],
       backgroundColor: [
-        'rgb(255, 255, 204)',
-        'rgb(51, 204, 204)',
+        'rgb(87, 165, 196)',
+        'rgb(177, 210, 152)',
+        'rgb(199, 225, 153)',
       ],
       borderColor: [
         'rgba(255, 99, 132, 1)',
         'rgba(54, 162, 235, 1)',
       ],
-      borderWidth: 1,
+      borderWidth: 0,
     },
   ],
 };

@@ -65,7 +65,7 @@ const Layout = () => {
         <div className="h-100 d-inline">
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
-                    <div className="main-body">
+                    <div className="main-body justify-content-center align-items-center">
                         {store.logged ? <Sidebar /> : ''}
                         <Routes>
                             <Route element={<Login />} path="/login" />
