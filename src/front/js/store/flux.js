@@ -28,6 +28,31 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const variableexpense = await response.json()
 				setStore({...getStore(), variableexpense})
 			},
+
+			getExpenses: async() => {
+                const response = await fetch (process.env.BACKEND_URL + "api/expense", {
+                    method: 'GET',
+                    headers: {
+                        "Content-Type":"application/json",
+                        "Authorization": `Bearer ${localStorage.getItem('token')}`
+                    },
+                })
+                const expenses = await response.json();
+                setStore({ ...getStore(), expenses });
+            },
+            getIncomes: async() => {
+                const response = await fetch (process.env.BACKEND_URL + "api/income", {
+                    method: 'GET',
+                    headers: {
+                        "Content-Type":"application/json",
+                        "Authorization": `Bearer ${localStorage.getItem('token')}`
+                    },
+                })
+                const incomes = await response.json();
+                setStore({ ...getStore(), incomes });
+            },
+
+
             setExpense: async (value,category,dateTime,description) => {
 				const response = await fetch (process.env.BACKEND_URL + "api/expense", {
 					method: "POST",

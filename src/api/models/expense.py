@@ -20,4 +20,6 @@ class Expense(db.Model):
             "category": self.category,
             "dateTime": self.dateTime,
             "description": self.description,
+            "user": self.user.serialize()
+
         }
