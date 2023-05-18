@@ -1,49 +1,46 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
-export const Totalincomes =()=>{
+import { Context } from "../store/appContext";
+
+export const Totalincomes = () => {
+    const { store, actions } = useContext(Context);
+    useEffect(() => {
+        actions.getIncomes();
+    }, [])
     return (
         <>
-          <div className="wrap flex-column   w-100  m-3">
-        <div className="flex-column d-block align-items-center   m-5">
-        <h1 className="text-center">Resumen de Ingresos</h1>
-        </div>
-        <table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Fecha</th>
-      <th scope="col">Categoria</th>
-      <th scope="col">Importe</th>
-      <th scope="col">Balance</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>10/07/2023</td>
-      <td>casa</td>
-      <td>200</td>
-      <td>400</td>
-    </tr>
-    <tr>
-    <td>23/06/2022</td>
-      <td>transporte</td>
-      <td>234</td>
-      <td>543</td>
-    </tr>
-    <tr>
-    <td>06/11/2023</td>
-      <td>gasolina</td>
-      <td>899</td>
-      <td>1235</td>
-    </tr>
-  </tbody>
-</table>
-
-
-<Link to="/income">
-                        <button className="btn btn-success rounded">Volver</button>
-                    </Link>
-        </div>
-        
+            <div id="login" className="w-100 h-100">
+                <div className="row">
+                    <h1 className="text-center text-white p-5" id="fondoizq">Resumen de ingresos</h1>
+                </div>
+                <div className="wrap flex-column w-100 m-3">
+                    <div className="row justify-content-center align-items-center">
+                        <table className="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Fecha</th>
+                                    <th scope="col">Categoria</th>
+                                    <th scope="col">Importe</th>
+                                    <th scope="col">Balance</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {store.incomes.map(({value, category, dateTime}, index) => (
+                                    <tr key={index}>
+                                        <td scope="col">{dateTime}</td>
+                                        <td scope="col">{category}</td>
+                                        <td scope="col">{value}</td>
+                                        <td scope="col">400</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                        <Link to="/income">
+                            <button className="btn btn-success rounded">Volver</button>
+                        </Link>
+                    </div>
+                </div>
+            </div>
         </>
     )
 }

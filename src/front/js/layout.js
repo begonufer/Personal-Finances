@@ -26,7 +26,6 @@ import {LandingPage} from"./pages/landingpage";
 
 
 import { Navbar } from "./component/navbar";
-import { Footer } from "./component/footer";
 import { Sidebar } from "./component/sidebar";
 
 //create your first component

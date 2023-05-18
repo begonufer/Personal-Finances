@@ -40,6 +40,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 const expenses = await response.json();
                 setStore({ ...getStore(), expenses });
             },
+			
             getIncomes: async() => {
                 const response = await fetch (process.env.BACKEND_URL + "api/income", {
                     method: 'GET',
@@ -51,7 +52,6 @@ const getState = ({ getStore, getActions, setStore }) => {
                 const incomes = await response.json();
                 setStore({ ...getStore(), incomes });
             },
-
 
             setExpense: async (value,category,dateTime,description) => {
 				const response = await fetch (process.env.BACKEND_URL + "api/expense", {
@@ -83,7 +83,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						value,
 						category,
 						dateTime,
-						description,
 					})
 				})
 				const income = await response.json()
@@ -91,7 +90,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},	
 
 			setnewUser: async (email, password,name,surname,birthdate,phone_number) => {
-				const response = await fetch (process.env.BACKEND_URL + "api/user", {
+				const response = await fetch (process.env.BACKEND_URL + "api/user/", {
 					method: "POST",
 					headers: {
 						"Content-Type":"application/json",
@@ -107,7 +106,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 				const newuser = await response.json()
 				setStore({...getStore(), user: newuser})
-			},	
+			},
 			
 			setUser: async (email, password) => {
 				const response = await fetch (process.env.BACKEND_URL + "api/user/login", {
@@ -146,6 +145,5 @@ const getState = ({ getStore, getActions, setStore }) => {
 	};
 	
 };
-
 
 export default getState;
