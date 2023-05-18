@@ -9,6 +9,7 @@ class Income(db.Model):
     dateTime = db.Column(db.DateTime, unique=False, nullable=True)
     description = db.Column(db.String(80), nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user = db.relationship('User', backref='income')
 
     def __repr__(self):
         return f'<Income {self.value}>'
@@ -20,4 +21,5 @@ class Income(db.Model):
             "category": self.category,
             "dateTime": self.dateTime,
             "description": self.description,
+            "user": self.user.serialize()
         }
