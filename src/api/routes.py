@@ -71,7 +71,6 @@ def add_income():
     income.value = request.json.get("value",None)
     income.category = request.json.get("category",None)
     income.dateTime = datetime.now()
-    income.description = request.json.get("description",None)
     income.user_id = get_jwt_identity()
     db.session.add(income)
     db.session.commit()

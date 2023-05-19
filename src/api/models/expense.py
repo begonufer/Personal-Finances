@@ -21,5 +21,5 @@ class Expense(db.Model):
             "dateTime": self.dateTime,
             "description": self.description,
             "user": self.user.serialize()
-
         }
+

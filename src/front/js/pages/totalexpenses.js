@@ -1,51 +1,46 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
-export const Totalexpenses =()=>{
+import { Context } from "../store/appContext";
+
+export const Totalexpenses = () => {
+    const { store, actions } = useContext(Context);
+    useEffect(() => {
+        actions.getExpenses();
+    }, [])
     return (
         <>
-          <div className="wrap flex-column   w-100  m-3">
-            <div>
-              <h1 className="text-center">Resumen</h1>
+            <div id="login" className="w-100 h-100">
+                <div className="row">
+                    <h1 className="text-center text-white p-5" id="fondoizq">Resumen de gastos</h1>
+                </div>
+                <div className="wrap flex-column w-100 m-3">
+                    <div className="row justify-content-center align-items-center">
+                        <table className="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Fecha</th>
+                                    <th scope="col">Categoria</th>
+                                    <th scope="col">Importe</th>
+                                    <th scope="col">Balance</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {store.expenses.map(({value, category, dateTime}, index) => (
+                                    <tr key={index}>
+                                        <td scope="col">{dateTime}</td>
+                                        <td scope="col">{category}</td>
+                                        <td scope="col">{value}</td>
+                                        <td scope="col">400</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                        <Link to="/expense">
+                            <button className="btn btn-success rounded">Volver</button>
+                        </Link>
+                    </div>
+                </div>
             </div>
-            <table className="table">
-                    <thead>
-                        <tr>
-                        <th scope="col">Fecha</th>
-                        <th scope="col">Categoría</th>
-                        <th scope="col">Importe</th>
-                        <th scope="col">Balance</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                        <th scope="row">09/09/09</th>
-                        <td>Cate1</td>
-                        <td>23'00 €</td>
-                        <td>1035'56 €</td>
-                        </tr>
-                        <tr>
-                        <th scope="row">09/09/09</th>
-                        <td>Cate2</td>
-                        <td>45'00 €</td>
-                        <td>995'56 €</td>
-                        </tr>
-                        <tr>
-                        <th scope="row">09/09/09</th>
-                        <td>Cate3</td>
-                        <td>10'45 €</td>
-                        <td>985'11 €</td>
-                        </tr>
-                    </tbody>
-                </table>
-            <div>
-              <Link to="/expenses">
-                <button className="btn btn-success rounded">Volver</button>
-              </Link>             
-              <Link to="/variableexpense">
-                <button className="btn btn-success rounded">Gastos Variables</button>
-              </Link>
-            </div>
-        </div>        
-      </>        
+        </>
     )
 }

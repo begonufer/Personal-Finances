@@ -13,6 +13,8 @@ from api.admin import setup_admin
 from api.commands import setup_commands
 from flask_jwt_extended import JWTManager
 from flasgger import Swagger
+from datetime import timedelta
+
 
 #from models import Person
 
@@ -23,6 +25,8 @@ swagger = Swagger(app)
 app.config["JWT_SECRET_KEY"] = "Finanzas_personales" 
 jwt = JWTManager(app)
 app.url_map.strict_slashes = False
+ACCESS_EXPIRES = timedelta(hours=8)
+app.config["JWT_ACCESS_TOKEN_EXPIRES"] = ACCESS_EXPIRES
 
 # database condiguration
 db_url = os.getenv("DATABASE_URL")

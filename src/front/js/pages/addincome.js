@@ -6,7 +6,6 @@ export const Addincome =()=>{
     const [value, setValue] = useState ('');
     const [category, setCategory] = useState ('');
     const [dateTime, setDateTime] = useState ('');
-    const [description, setDescription] = useState ('');
     const updateValue= (valueInputValue) => {
         setValue(valueInputValue)
     }
@@ -16,12 +15,9 @@ export const Addincome =()=>{
     const updateDateTime= (dateTimeInputValue) => {
         setDateTime(dateTimeInputValue)
     }
-    const updateDescription= (descriptionInputValue) => {
-        setDescription(descriptionInputValue)
-    }
     const { store, actions } = useContext(Context);
     const addincome = async() => {
-        await actions.setIncome(value,category,dateTime,description)
+        await actions.setIncome(value,category,dateTime)
         console.log(store.Income)
     }
     return (
@@ -33,7 +29,7 @@ export const Addincome =()=>{
                 <div className="row justify-content-center align-items-center">
                     <div className="col-9 p-5 m-5 text-center">
                         <div className="row mt-5">
-                            <input type="text" className="col-3 my-3 rounded-0" onChange={(e)=>{updateDateTime(e.target.value)}} id="inputDate" placeholder="Fecha"/>
+                            <input type="date" className="col-3 my-3 rounded-0" onChange={(e)=>{updateDateTime(e.target.value)}} id="inputDate" placeholder="Fecha"/>
                                 <div className="col-6">
                                     <select onChange={(e)=>{updateCategory(e.target.value)}} id="inputCategory" className="w-100 my-3 rounded-0">
                                         <option>Selecciona una categoría</option>
@@ -48,7 +44,7 @@ export const Addincome =()=>{
                             <Link to="/income">
                                 <button id="botoningreso"className="col-3 btn btn-lg text-white fs-4 m-3">Cancelar</button>
                             </Link>
-                            <button onClick={addincome} id="botoningreso"className="col-3 btn btn-lg m-3 text-white fs-4" >Añadir</button>              
+                            <button onClick={addincome} id="botoningreso" className="col-3 btn btn-lg m-3 text-white fs-4" >Añadir</button>              
                         </div>
                     </div>
                 </div>
