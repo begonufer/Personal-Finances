@@ -11,11 +11,14 @@ import {
   } from 'chart.js';
 import { Bar, Pie } from 'react-chartjs-2';
 import { Context } from "../store/appContext";
+
 import { format } from "date-fns";
 import es from 'date-fns/locale/es';
 
-ChartJS.register(ArcElement, Tooltip, Legend);
 
+ChartJS.register(ArcElement, Tooltip, Legend);
+import { format } from "date-fns";
+import es from 'date-fns/locale/es';
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -24,7 +27,6 @@ ChartJS.register(
     Tooltip,
     Legend
   );
-
 export const Income =()=>{
   const { store, actions } = useContext(Context)
   const [bardata, setBardata] = useState(
@@ -74,7 +76,7 @@ export const Income =()=>{
     <>
             <div id="login" className="w-100 h-100">
                 <div className="row">
-                    <h1 className="text-center text-white p-5" id="fondoizq">Ingresos</h1>                  
+                    <h1 className="text-center text-white p-5" id="fondoizq">Ingresos</h1>
                 </div>
                 <div className="row justify-content-center align-items-center">
                     <div className="col-5 p-5 m-5 text-center">
@@ -94,12 +96,10 @@ export const Income =()=>{
                 <Link to="/addincome">
                     <button type="button" className="btn btn-circle btn-xl"> <i className="fa-solid fa-plus"></i> </button>
                 </Link>
-            </div> 
-    </>   
+            </div>
+    </>
   )
 }
-
- 
 
 export const options = {
   plugins: {
@@ -118,7 +118,6 @@ export const options = {
     },
   },
 };
-
 export const pieData = {
   labels: ['Casa', 'Compra'],
   datasets: [
