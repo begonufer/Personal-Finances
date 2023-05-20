@@ -19,15 +19,17 @@ export const Totalexpenses = () => {
                             <thead>
                                 <tr>
                                     <th scope="col">Fecha</th>
+                                    <th scope="col">Tipo</th>
                                     <th scope="col">Categoria</th>
                                     <th scope="col">Importe</th>
                                     <th scope="col">Balance</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {store.expenses.map(({value, category, dateTime}, index) => (
+                                {store.expenses.map(({dateTime, type, category, value}, index) => (
                                     <tr key={index}>
                                         <td scope="col">{dateTime}</td>
+                                        <td scope="col">{type}</td>
                                         <td scope="col">{category}</td>
                                         <td scope="col">{value}</td>
                                         <td scope="col">400</td>
@@ -35,7 +37,7 @@ export const Totalexpenses = () => {
                                 ))}
                             </tbody>
                         </table>
-                        <Link to="/expense">
+                        <Link to="/expenses">
                             <button className="btn btn-success rounded">Volver</button>
                         </Link>
                     </div>

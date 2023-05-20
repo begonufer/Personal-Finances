@@ -25,18 +25,30 @@ ChartJS.register(
 export const Expenses =()=>{
     return (
         <>
-            <div className="d-block w-100 h-100 m-5 align-items-center">
-                <h1 className="text-center">Gastos</h1>
-                <h5 className="text-center">Resumen mensual</h5>
-                <div className="d-flex h-50 m-5 align-items-center justify-content-center">
-                    <Pie data={pieData} />
-                    <Bar options={options} data={barData} />
+          <div id="login" className="w-100 h-100">
+            <div className="row">
+              <h1 className="text-center text-white p-5" id="fondoizq">Gastos</h1>
+            </div>
+            <div className="row justify-content-center align-items-center">
+              <div className="col-5 p-5 m-5 text-center">
+                <div className="row mt-5">
+                  <Pie data={pieData} />
                 </div>
-                <a href="/totalexpenses" className="totalizacion m-5 text-center shadow align-middle align-items-center text-decoration-none w-50">
-                  <h2 className="d-none d-sm-inline">Resumen de gastos</h2>
-                </a>
-                <AddExpenseButton />
-            </div>        
+              </div>
+              <div className="col-5 justify-content-center align-items-center mt-5 mb-4">
+                <Bar options={options} data={barData} />
+              </div>
+            </div>
+            <div className="d-block w-100 h-100 m-5 align-items-center">
+              <a href="/totalexpenses" id="totalizacion" className="text-center m-5 text-center shadow align-middle align-items-center text-decoration-none">
+                <h2 className="d-none d-sm-inline">Resumen de gastos</h2>
+              </a>
+              <Link to="/addexpense">
+                  <button type="button" className="btn btn-circle btn-xl"> <i className="fa-solid fa-plus"></i> </button>
+              </Link>
+              <AddExpenseButton />
+            </div>
+          </div>      
         </>
     )
 }

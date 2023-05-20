@@ -20,6 +20,7 @@ import {Totalexpenses} from"./pages/totalexpenses";
 import {Addincome} from"./pages/addincome";
 import {Addfixedexpense} from"./pages/addfixedexpense";
 import {Addvariableexpense} from"./pages/addvariableexpense";
+import {AddExpense} from"./pages/addexpense";
 import {Principal} from"./pages/principal";
 import {Expenses} from"./pages/expenses";
 import {LandingPage} from"./pages/landingpage";
@@ -79,6 +80,7 @@ const Layout = () => {
                             <Route element={<Addincome />} path="/addincome" />
                             <Route element={<Addfixedexpense />} path="/addfixedexpense" />
                             <Route element={<Addvariableexpense />} path="/addvariableexpense" />
+                            <Route element={<AddExpense />} path="/addexpense" />
                             <Route element={<Principal />} path="/principal" />
                             <Route element={<Expenses />} path="/expenses" />
                             <Route element={<LandingPage />} path="/" />

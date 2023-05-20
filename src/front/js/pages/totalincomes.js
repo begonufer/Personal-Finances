@@ -1,11 +1,19 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
+import { format } from "date-fns";
+
 export const Totalincomes = () => {
     const { store, actions } = useContext(Context);
+    const [incomes, setIncomes] = useState([]);
     useEffect(() => {
-        actions.getIncomes();
+        async function transformData() {
+            await actions.getIncomes();
+            const data = store.incomes.map((income) => ({ ...income, dateTime: format(new Date(income.dateTime), 'dd/MM/yyyy' )}))
+            setIncomes(data);
+        }
+        transformData();
     }, [])
     return (
         <>
@@ -21,16 +29,14 @@ export const Totalincomes = () => {
                                     <th scope="col">Fecha</th>
                                     <th scope="col">Categoria</th>
                                     <th scope="col">Importe</th>
-                                    <th scope="col">Balance</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {store.incomes.map(({value, category, dateTime}, index) => (
+                                {incomes.map(({value, category, dateTime}, index) => (  
                                     <tr key={index}>
                                         <td scope="col">{dateTime}</td>
                                         <td scope="col">{category}</td>
                                         <td scope="col">{value}</td>
-                                        <td scope="col">400</td>
                                     </tr>
                                 ))}
                             </tbody>
