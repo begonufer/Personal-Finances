@@ -5,6 +5,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			logged: false,
 			incomes: [],
 			expenses: [],
+			types: null,
+			categories: null,
 			token: ""
 		},
 		actions: {
@@ -53,24 +55,49 @@ const getState = ({ getStore, getActions, setStore }) => {
                 setStore({ ...getStore(), incomes });
             },
 
-            setExpense: async (value,category,dateTime,description) => {
+			getTypes: async() => {
+				const response = await fetch (process.env.BACKEND_URL + "api/types", {
+                    method: 'GET',
+                    headers: {
+                        "Content-Type":"application/json",
+                        "Authorization": `Bearer ${localStorage.getItem('token')}`
+                    },
+				})
+				const types = await response.json();
+				setStore({...getStore(), types });
+			},
+
+			getCategories: async() => {
+				const response = await fetch (process.env.BACKEND_URL + "api/categories", {
+                    method: 'GET',
+                    headers: {
+                        "Content-Type":"application/json",
+                        "Authorization": `Bearer ${localStorage.getItem('token')}`
+                    },
+				})
+				const categories = await response.json();
+				setStore({...getStore(), categories });
+			},
+
+            setExpense: async (dateTime,type_id,category_id,value) => {
 				const response = await fetch (process.env.BACKEND_URL + "api/expense", {
 					method: "POST",
 					headers: {
 						"Content-Type":"application/json",
+						"Authorization": `Bearer ${localStorage.getItem('token')}`
 					},
 					body: JSON.stringify({
 						value,
-						category,
+						category_id,
 						dateTime,
-						description,
+						type_id,
 					})
 				})
 				const expense = await response.json()
 				setStore({...getStore(), expense})
 			},
 
-			setIncome: async (value,category,dateTime,description) => {
+			setIncome: async (value,category,dateTime,) => {
 				const store = getStore();
 				console.log(store)
 				const response = await fetch (process.env.BACKEND_URL + "api/income", {

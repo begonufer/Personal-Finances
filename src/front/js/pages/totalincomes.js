@@ -1,7 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
+
 import { format } from "date-fns";
+
 export const Totalincomes = () => {
     const { store, actions } = useContext(Context);
     const [incomes, setIncomes] = useState([]);
@@ -30,7 +32,7 @@ export const Totalincomes = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {incomes.map(({value, category, dateTime}, index) => (
+                                {incomes.map(({value, category, dateTime}, index) => (  
                                     <tr key={index}>
                                         <td scope="col">{dateTime}</td>
                                         <td scope="col">{category}</td>

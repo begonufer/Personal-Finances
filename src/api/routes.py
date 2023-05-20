@@ -10,6 +10,8 @@ from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_requir
 from datetime import datetime
 from api.models.income import Income
 from api.models.expense import Expense
+from api.models.category import Category
+from api.models.type import Type
 from api.models.reserved import Reserved
 
 api = Blueprint('api', __name__)
@@ -69,7 +71,7 @@ def add_income():
     
     income = Income()
     income.value = request.json.get("value",None)
-    income.category = request.json.get("category",None)
+    income.category_income = request.json.get("category_income",None)
     income.dateTime = datetime.now()
     income.user_id = get_jwt_identity()
     db.session.add(income)
@@ -85,6 +87,21 @@ def get_expenses():
     expenses = Expense.query.filter_by(user_id = user_id).all()
     return jsonify([expense.serialize() for expense in expenses])
 
+@api.route('/types', methods=['GET'])
+@jwt_required()
+def get_types():
+    # all_types = Type.query.all()
+    # all_types_serialized = []
+    # for type in all_types: 
+    #     type.serialize()
+    #     all_types_serialized.append(type)
+    return jsonify([type.serialize() for type in Type.query.all()])
+
+@api.route('/categories', methods=['GET'])
+@jwt_required()
+def get_categories():
+    return jsonify([category.serialize() for category in Category.query.all()])
+
 #Esta ruta va hacer usada para registrar gastos.
 @api.route('/expense', methods=['POST'])
 @jwt_required()
@@ -92,9 +109,9 @@ def add_expense():
 
     expense = Expense()
     expense.value = request.json.get("value", None)
-    expense.category = request.json.get("category", None)
+    expense.category_id = request.json.get("category_id", None)
     expense.dateTime = datetime.now()
-    expense.description = request.json.get("description", None)
+    expense.type_id = request.json.get("type_id", None)
     expense.user_id = get_jwt_identity()
     db.session.add(expense)
     db.session.commit()

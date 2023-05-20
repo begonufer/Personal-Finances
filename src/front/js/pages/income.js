@@ -11,6 +11,11 @@ import {
   } from 'chart.js';
 import { Bar, Pie } from 'react-chartjs-2';
 import { Context } from "../store/appContext";
+
+import { format } from "date-fns";
+import es from 'date-fns/locale/es';
+
+
 ChartJS.register(ArcElement, Tooltip, Legend);
 import { format } from "date-fns";
 import es from 'date-fns/locale/es';
@@ -95,6 +100,7 @@ export const Income =()=>{
     </>
   )
 }
+
 export const options = {
   plugins: {
     title: {
