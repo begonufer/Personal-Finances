@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import {
     Chart as ChartJS,
@@ -10,8 +10,10 @@ import {
     Legend,
   } from 'chart.js';
 import { Bar, Pie } from 'react-chartjs-2';
+import { Context } from "../store/appContext";
 ChartJS.register(ArcElement, Tooltip, Legend);
-
+import { format } from "date-fns";
+import es from 'date-fns/locale/es';
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -20,13 +22,56 @@ ChartJS.register(
     Tooltip,
     Legend
   );
-
 export const Income =()=>{
+  const { store, actions } = useContext(Context)
+  const [bardata, setBardata] = useState(
+    {
+      labels: [],
+      datasets: [
+        {
+          label: 'ingresos',
+          data: [],
+          backgroundColor: 'rgb(0, 255, 0)',
+        },
+      ],
+  });
+    useEffect(() => {
+        async function transformData() {
+            await actions.getIncomes();
+            const data = store.incomes.map((income) => {
+              const dateTime = new Date(income.dateTime);
+              const month = format(dateTime, 'MMMM', {locale: es})
+              return { ...income, dateTime, month}
+            })
+            const months = Array.from(data.reduce((total, {month}) => {
+              total.add(month);
+              return total;
+            }, new Set()));
+            const valueByMonth = months.map((month) => data.reduce((totalByMonth, income) => {
+              if(income.month === month) {
+                totalByMonth += income.value
+              }
+              return totalByMonth
+            }, 0))
+            const graphdata = {
+              labels: months,
+              datasets: [
+                {
+                  label: 'ingresos',
+                  data: valueByMonth,
+                  backgroundColor: 'rgb(0, 255, 0)',
+                },
+              ],
+          };
+          setBardata(graphdata);
+        }
+        transformData();
+    }, [])
   return (
     <>
             <div id="login" className="w-100 h-100">
                 <div className="row">
-                    <h1 className="text-center text-white p-5" id="fondoizq">Ingresos</h1>                  
+                    <h1 className="text-center text-white p-5" id="fondoizq">Ingresos</h1>
                 </div>
                 <div className="row justify-content-center align-items-center">
                     <div className="col-5 p-5 m-5 text-center">
@@ -35,7 +80,7 @@ export const Income =()=>{
                         </div>
                     </div>
                     <div className="col-5 justify-content-center align-items-center mt-5 mb-4">
-                      <Bar options={options} data={barData} />
+                      <Bar options={options} data={bardata} />
                     </div>
                 </div>
                 <div className="d-block w-100 h-100 m-5 align-items-center">
@@ -46,22 +91,10 @@ export const Income =()=>{
                 <Link to="/addincome">
                     <button type="button" className="btn btn-circle btn-xl"> <i className="fa-solid fa-plus"></i> </button>
                 </Link>
-            </div> 
-    </>   
+            </div>
+    </>
   )
 }
-
-export const barData = {
-    labels: ['Enero', 'Febrero', 'Marzo', 'Abril'],
-    datasets: [
-      {
-        label: 'ingresos',
-        data: [1800,1600,1500,1200],
-        backgroundColor: 'rgb(0, 255, 0)',
-      },
-    ],
-};  
-
 export const options = {
   plugins: {
     title: {
@@ -79,7 +112,6 @@ export const options = {
     },
   },
 };
-
 export const pieData = {
   labels: ['Casa', 'Compra'],
   datasets: [
