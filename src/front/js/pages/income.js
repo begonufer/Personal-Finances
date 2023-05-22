@@ -17,8 +17,6 @@ import es from 'date-fns/locale/es';
 
 
 ChartJS.register(ArcElement, Tooltip, Legend);
-import { format } from "date-fns";
-import es from 'date-fns/locale/es';
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -89,9 +87,9 @@ export const Income =()=>{
                     </div>
                 </div>
                 <div className="d-block w-100 h-100 m-5 align-items-center">
-                    <a href="/totalincomes" id="totalizacion" className="text-center shadow align-middle align-items-center text-decoration-none">
+                    <Link to="/totalincomes" id="totalizacion" className="text-center shadow align-middle align-items-center text-decoration-none">
                         <span>Resumen de ingresos</span>
-                    </a>
+                    </Link>
                 </div>
                 <Link to="/addincome">
                     <button type="button" className="btn btn-circle btn-xl"> <i className="fa-solid fa-plus"></i> </button>

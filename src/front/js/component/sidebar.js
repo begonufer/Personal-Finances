@@ -1,7 +1,12 @@
-import React , {useState} from "react";
+import React , { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export const Sidebar = () => {
+    const { actions } = useContext(Context);
+    const logout = () => {
+        actions.clearUser();
+    }
 	return (
         <div className="sidebar col-auto col-md-3 col-xl-2 px-sm-2 px-0 h-100">
             <div className="d-flex align-content-between flex-column bd-highlight mb-3">
@@ -26,7 +31,7 @@ export const Sidebar = () => {
                     <Link to="/user" className="align-middle px-4 text-decoration-none">
                         <i className="fa-solid fa-gear"></i> <span className="ms-1 d-none d-sm-inline">Configuración</span>
                     </Link>
-                    <Link to="/" className="align-middle px-4 text-decoration-none">
+                    <Link to="/login" className="align-middle px-4 text-decoration-none" onClick={() => logout()}>
                         <i className="fa-solid fa-right-from-bracket"></i> <span className="ms-1 d-none d-sm-inline">Sign out</span>
                     </Link>
                 </div>
