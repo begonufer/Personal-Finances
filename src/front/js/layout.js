@@ -3,9 +3,6 @@ import { Context } from "./store/appContext";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import { BackendURL } from "./component/backendURL";
-import { Home } from "./pages/home";
-import { Demo } from "./pages/demo";
-import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 
 import {Login} from"./pages/login";
@@ -24,9 +21,6 @@ import {AddExpense} from"./pages/addexpense";
 import {Principal} from"./pages/principal";
 import {Expenses} from"./pages/expenses";
 import {LandingPage} from"./pages/landingpage";
-
-
-import { Navbar } from "./component/navbar";
 import { Sidebar } from "./component/sidebar";
 
 //create your first component
@@ -68,26 +62,30 @@ const Layout = () => {
                     <div className="main-body justify-content-center align-items-center">
                         {store.logged ? <Sidebar /> : ''}
                         <Routes>
+                            {
+                                store.logged ?
+                                <>
+                                    <Route element={<Income />} path="/income" />
+                                    <Route element={<FixedExpense />} path="/fixedexpense" />
+                                    <Route element={<VariableExpense />} path="/variableexpense" />
+                                    <Route element={<User />} path="/user" />
+                                    <Route element={<Cartera />} path="/cartera" />
+                                    <Route element={<Totalincomes />} path="/totalincomes" />
+                                    <Route element={<Totalexpenses />} path="/totalexpenses" />
+                                    <Route element={<Addincome />} path="/addincome" />
+                                    <Route element={<Addfixedexpense />} path="/addfixedexpense" />
+                                    <Route element={<Addvariableexpense />} path="/addvariableexpense" />
+                                    <Route element={<AddExpense />} path="/addexpense" />
+                                    <Route element={<Principal />} path="/principal" />
+                                    <Route element={<Expenses />} path="/expenses" />                                
+                                </>
+                                : true
+                            }
+
                             <Route element={<Login />} path="/login" />
                             <Route element={<Signup />} path="/signup" />
-                            <Route element={<Income />} path="/income" />
-                            <Route element={<FixedExpense />} path="/fixedexpense" />
-                            <Route element={<VariableExpense />} path="/variableexpense" />
-                            <Route element={<User />} path="/user" />
-                            <Route element={<Cartera />} path="/cartera" />
-                            <Route element={<Totalincomes />} path="/totalincomes" />
-                            <Route element={<Totalexpenses />} path="/totalexpenses" />
-                            <Route element={<Addincome />} path="/addincome" />
-                            <Route element={<Addfixedexpense />} path="/addfixedexpense" />
-                            <Route element={<Addvariableexpense />} path="/addvariableexpense" />
-                            <Route element={<AddExpense />} path="/addexpense" />
-                            <Route element={<Principal />} path="/principal" />
-                            <Route element={<Expenses />} path="/expenses" />
                             <Route element={<LandingPage />} path="/" />
 
-                            <Route element={<Home />} path="/" />
-                            <Route element={<Demo />} path="/demo" />
-                            <Route element={<Single />} path="/single/:theid" />
                             <Route element={<h1>Not found!</h1>} />
                         </Routes>
                     </div>

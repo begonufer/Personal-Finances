@@ -1,11 +1,13 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../../styles/welcome.css";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const updateEmail = (emailInputValue) => {
     setEmail(emailInputValue);
@@ -18,11 +20,13 @@ export const Login = () => {
   const { actions } = useContext(Context);
   const login = async () => {
     await actions.setUser(email, password);
+    navigate('/income');
   };
 
   return (
     <>
-      <div id="login" className="w-100">
+      {loading}
+      {!loading && (<div id="login" className="w-100">
         <div className="m-0 vh-100 row justify-content-center align-items-center">
           <div className="col-auto p-0 rounded shadow" id="fondoizq">
             <div className="row p-5 text-center justify-content-center align-items-center rounded-1">
@@ -75,13 +79,13 @@ export const Login = () => {
                   </button>
                 </div>
                 <span className="text-white">
-                  ¿No tienes cuenta? <a href="/signup"> Regístrate </a>{" "}
+                ¿No tienes cuenta? <Link to="/signup"> Regístrate </Link>{" "}
                 </span>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </div>)}
     </>
   );
 };

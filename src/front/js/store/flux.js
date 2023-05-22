@@ -154,6 +154,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({...getStore(), token:user.token, user})
 			},
 
+			clearUser: () => {
+				localStorage.removeItem('token')
+				getActions().setLogged(false)
+				setStore({...getStore(), token: '', user: {}})
+			},
+
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();

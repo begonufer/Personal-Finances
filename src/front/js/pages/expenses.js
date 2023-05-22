@@ -40,9 +40,9 @@ export const Expenses =()=>{
               </div>
             </div>
             <div className="d-block w-100 h-100 m-5 align-items-center">
-              <a href="/totalexpenses" id="totalizacion" className="text-center m-5 text-center shadow align-middle align-items-center text-decoration-none">
+              <Link to="/totalexpenses" id="totalizacion" className="text-center m-5 text-center shadow align-middle align-items-center text-decoration-none">
                 <h2 className="d-none d-sm-inline">Resumen de gastos</h2>
-              </a>
+              </Link>
               <Link to="/addexpense">
                   <button type="button" className="btn btn-circle btn-xl"> <i className="fa-solid fa-plus"></i> </button>
               </Link>
