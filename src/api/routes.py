@@ -75,7 +75,7 @@ def add_income():
     income.incomecategory_id = request.json.get("incomecategory_id",None)
     incomecategory = IncomeCategory.query.filter_by(id=income.incomecategory_id).first()
     income.incomecategory = incomecategory
-    income.dateTime = datetime.now()
+    income.dateTime = datetime.strptime(request.json.get("dateTime"), "%Y-%m-%d").date()
     income.user_id = get_jwt_identity()
     db.session.add(income)
     db.session.commit()
@@ -118,7 +118,7 @@ def add_expense():
     expense = Expense()
     expense.value = request.json.get("value", None)
     expense.category_id = request.json.get("category_id", None)
-    expense.dateTime = datetime.now()
+    expense.dateTime = datetime.strptime(request.json.get("dateTime"), "%Y-%m-%d").date()
     expense.type_id = request.json.get("type_id", None)
     expense.user_id = get_jwt_identity()
     db.session.add(expense)

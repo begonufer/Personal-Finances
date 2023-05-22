@@ -39,7 +39,7 @@ export const AddExpense =()=>{
                 <div className="row justify-content-center align-items-center">
                     <div className="col-11 p-5 m-5 text-center">
                         <div className="row mt-5">
-                            <input type="text" className="col-2 my-3 rounded-0" onChange={(e)=>{updateDateTime(e.target.value)}} id="inputDate" placeholder="Fecha"/>
+                            <input type="date" className="col-2 my-3 rounded-0" onChange={(e)=>{updateDateTime(e.target.value)}} id="inputDate" placeholder="Fecha"/>
                                 <div className="col-5">
                                     <select onChange={(e)=>{updateType(e.target.value)}} id="inputCategory" className="w-100 my-3 rounded-0">
                                         <option>Selecciona el tipo de gasto</option>
