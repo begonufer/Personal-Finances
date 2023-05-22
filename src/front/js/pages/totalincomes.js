@@ -32,10 +32,10 @@ export const Totalincomes = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {incomes.map(({value, category, dateTime}, index) => (  
+                                {incomes.map(({value, incomecategory, dateTime}, index) => (  
                                     <tr key={index}>
                                         <td scope="col">{dateTime}</td>
-                                        <td scope="col">{category}</td>
+                                        <td scope="col">{incomecategory}</td>
                                         <td scope="col">{value}</td>
                                     </tr>
                                 ))}

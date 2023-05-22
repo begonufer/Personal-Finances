@@ -5,6 +5,7 @@ from api.models.user import User
 from api.models.income import Income
 from api.models.expense import Expense
 from api.models.category import Category
+from api.models.incomecategory import IncomeCategory
 from api.models.type import Type
 from api.models.db import db
 from flask_admin.contrib.sqla import ModelView
@@ -20,6 +21,7 @@ def setup_admin(app):
     admin.add_view(ModelView(Income, db.session))
     admin.add_view(ModelView(Expense, db.session))
     admin.add_view(ModelView(Category, db.session))
+    admin.add_view(ModelView(IncomeCategory, db.session))
     admin.add_view(ModelView(Type, db.session))
     # You can duplicate that line to add mew models
     # admin.add_view(ModelView(YourModelName, db.session))
