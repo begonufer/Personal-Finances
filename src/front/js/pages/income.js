@@ -15,16 +15,16 @@ import { Context } from "../store/appContext";
 import { format } from "date-fns";
 import es from 'date-fns/locale/es';
 
-
-ChartJS.register(ArcElement, Tooltip, Legend);
 ChartJS.register(
     CategoryScale,
     LinearScale,
     BarElement,
     Title,
     Tooltip,
-    Legend
+    Legend,
+    ArcElement
   );
+  
 export const Income =()=>{
   const { store, actions } = useContext(Context)
   const [bardata, setBardata] = useState(

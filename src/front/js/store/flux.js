@@ -7,6 +7,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			expenses: [],
 			types: null,
 			categories: null,
+			incomecategories: null,
 			token: ""
 		},
 		actions: {
@@ -79,6 +80,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({...getStore(), categories });
 			},
 
+			getIncomeCategories: async() => {
+				const response = await fetch (process.env.BACKEND_URL + "api/incomecategories", {
+                    method: 'GET',
+                    headers: {
+                        "Content-Type":"application/json",
+                        "Authorization": `Bearer ${localStorage.getItem('token')}`
+                    },
+				})
+				const incomecategories = await response.json();
+				setStore({...getStore(), incomecategories });
+			},
+
             setExpense: async (dateTime,type_id,category_id,value) => {
 				const response = await fetch (process.env.BACKEND_URL + "api/expense", {
 					method: "POST",
@@ -97,18 +110,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({...getStore(), expense})
 			},
 
-			setIncome: async (value,category,dateTime,) => {
+			setIncome: async (dateTime,incomecategory_id,value) => {
 				const store = getStore();
 				console.log(store)
 				const response = await fetch (process.env.BACKEND_URL + "api/income", {
 					method: "POST",
 					headers: {
 						"Content-Type":"application/json",
-						"Authorization":`Bearer ${store.token}`
+						"Authorization": `Bearer ${localStorage.getItem('token')}`
 					},
 					body: JSON.stringify({
 						value,
-						category,
+						incomecategory_id,
 						dateTime,
 					})
 				})

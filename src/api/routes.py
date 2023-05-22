@@ -11,6 +11,7 @@ from datetime import datetime
 from api.models.income import Income
 from api.models.expense import Expense
 from api.models.category import Category
+from api.models.incomecategory import IncomeCategory
 from api.models.type import Type
 from api.models.reserved import Reserved
 
@@ -71,8 +72,10 @@ def add_income():
     
     income = Income()
     income.value = request.json.get("value",None)
-    income.category_income = request.json.get("category_income",None)
-    income.dateTime = datetime.now()
+    income.incomecategory_id = request.json.get("incomecategory_id",None)
+    incomecategory = IncomeCategory.query.filter_by(id=income.incomecategory_id).first()
+    income.incomecategory = incomecategory
+    income.dateTime = datetime.strptime(request.json.get("dateTime"), "%Y-%m-%d").date()
     income.user_id = get_jwt_identity()
     db.session.add(income)
     db.session.commit()
@@ -102,6 +105,11 @@ def get_types():
 def get_categories():
     return jsonify([category.serialize() for category in Category.query.all()])
 
+@api.route('/incomecategories', methods=['GET'])
+@jwt_required()
+def get_incomecategories():
+    return jsonify([incomecategory.serialize() for incomecategory in IncomeCategory.query.all()])
+
 #Esta ruta va hacer usada para registrar gastos.
 @api.route('/expense', methods=['POST'])
 @jwt_required()
@@ -110,7 +118,7 @@ def add_expense():
     expense = Expense()
     expense.value = request.json.get("value", None)
     expense.category_id = request.json.get("category_id", None)
-    expense.dateTime = datetime.now()
+    expense.dateTime = datetime.strptime(request.json.get("dateTime"), "%Y-%m-%d").date()
     expense.type_id = request.json.get("type_id", None)
     expense.user_id = get_jwt_identity()
     db.session.add(expense)
