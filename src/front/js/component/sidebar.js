@@ -14,24 +14,24 @@ export const Sidebar = () => {
                     <Link to="/principal" className="d-flex align-middle align-items-center mb-5 w-100 text-decoration-none">
                         <span className="conmo w-100 text-center fs-1">CONMO</span>
                     </Link>
-                    <Link to="/income" className="align-middle px-4 text-decoration-none">
+                    <Link to="/income" className="align-middle px-4 pb-4 text-decoration-none fs-3">
                         <i className="fa-solid fa-landmark"> </i> <span className="ms-1 d-none d-sm-inline">Ingresos</span>
                     </Link>
-                    <Link to="/expenses" className="align-middle px-4 text-decoration-none">
+                    <Link to="/expenses" className="align-middle px-4 pb-4 text-decoration-none fs-3">
                         <i className="fa-solid fa-receipt"> </i> <span className="ms-1 d-none d-sm-inline">Gastos</span>
                     </Link>
-                    <Link to="/fixedexpense" className="align-middle px-4 text-decoration-none">
+                    {/* <Link to="/fixedexpense" className="align-middle px-4 text-decoration-none">
                         <i className="fa-solid fa-circle-dollar-to-slot"> </i> <span className="ms-1 d-none d-sm-inline">Fijos</span>
                     </Link>
                     <Link to="/variableexpense" className="align-middle px-4 text-decoration-none">
                         <i className="fa-solid fa-cash-register"></i> <span className="ms-1 d-none d-sm-inline">Variables</span>
-                    </Link>
+                    </Link> */}
                 </div>
-                <div className="bottomconf d-flex flex-column align-items-center align-items-sm-start px-3 py-5 text-white w-100">
-                    <Link to="/user" className="align-middle px-4 text-decoration-none">
+                <div className="bottomconf d-flex flex-column align-items-center align-items-sm-start px-3 py-5 text-white">
+                    {/* <Link to="/user" className="align-middle px-4 text-decoration-none">
                         <i className="fa-solid fa-gear"></i> <span className="ms-1 d-none d-sm-inline">Configuración</span>
-                    </Link>
-                    <Link to="/login" className="align-middle px-4 text-decoration-none" onClick={() => logout()}>
+                    </Link> */}
+                    <Link to="/login" className="align-middle px-4 text-center text-decoration-none fs-3" onClick={() => logout()}>
                         <i className="fa-solid fa-right-from-bracket"></i> <span className="ms-1 d-none d-sm-inline">Sign out</span>
                     </Link>
                 </div>

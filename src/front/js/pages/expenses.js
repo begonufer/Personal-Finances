@@ -1,28 +1,101 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import { AddExpenseButton } from "../component/addexpensebutton";
 import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    BarElement, ArcElement,
-    Title,
-    Tooltip,
-    Legend,
-  } from 'chart.js';
-import { Bar, Pie } from 'react-chartjs-2';
-ChartJS.register(ArcElement, Tooltip, Legend);
-
-ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
-    Tooltip,
-    Legend
-  );
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  ArcElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import { Bar, Pie } from "react-chartjs-2";
+import { Context } from "../store/appContext";
+import { format } from "date-fns";
+import es from "date-fns/locale/es";
 
 export const Expenses =()=>{
+
+  const { store, actions } = useContext(Context);
+
+  const pieData = {
+    datasets: [
+      {
+        label: "Ingresos",
+        data: [1847, 632, 1276, 1340, 998, 3672, 1200, 1023, 678, 4560, 5423],
+        backgroundColor: [
+          "rgb(40, 124, 147)",
+          "rgb(29, 174, 159)",
+          "rgb(29, 180, 122)",
+          "rgb(138, 181, 63)",
+          "rgb(188, 207, 44)",
+          "rgb(207, 193, 44)",
+        ],
+        borderWidth: 0,
+      },
+    ],
+  };
+
+  const options = {
+    responsive: true,
+    };
+
+  const [ bardata, setBardata ] = useState({
+    labels: [],
+    datasets: [
+      {
+        label: "gastos",
+        data: [],
+        backgroundColor: [
+          "rgb(40, 124, 147)",
+          "rgb(29, 174, 159)",
+          "rgb(29, 180, 122)",
+          "rgb(138, 181, 63)",
+          "rgb(188, 207, 44)",
+          "rgb(207, 193, 44)",
+      ]
+      },
+    ],
+  });
+  
+  useEffect(() => {
+    async function transformData() {
+      await actions.getExpenses();
+      const data = store.expenses.map((expense) => {
+        const dateTime = new Date(expense.dateTime);
+        const month = format(dateTime, "MMMM", { locale: es });
+        return { ...expense, dateTime, month };
+      });
+      const months = Array.from(
+        data.reduce((total, { month }) => {
+          total.add(month);
+          return total;
+        }, new Set())
+      );
+      const valueByMonth = months.map((month) =>
+        data.reduce((totalByMonth, expense) => {
+          if (expense.month === month) {
+            totalByMonth += expense.value;
+          }
+          return totalByMonth;
+        }, 0)
+      );
+      const graphdata = {
+        labels: months,
+        datasets: [
+          {
+            label: "gastos",
+            data: valueByMonth,
+            background: "rgb(199, 225, 153)",
+          },
+        ],
+      };
+      setBardata(graphdata);
+    }
+    transformData();
+  }, []);
+
     return (
         <>
           <div id="login" className="w-100 h-100">
@@ -35,74 +108,19 @@ export const Expenses =()=>{
                   <Pie data={pieData} />
                 </div>
               </div>
-              <div className="col-5 justify-content-center align-items-center mt-5 mb-4">
-                <Bar options={options} data={barData} />
+              <div className="col justify-content-center align-items-center p-5 mb-4">
+                <Bar options={options} data={bardata} />
               </div>
             </div>
             <div className="d-block w-100 h-100 m-5 align-items-center">
-              <Link to="/totalexpenses" id="totalizacion" className="text-center m-5 text-center shadow align-middle align-items-center text-decoration-none">
-                <h2 className="d-none d-sm-inline">Resumen de gastos</h2>
+              <Link to="/totalexpenses">
+                <button id="botoningreso" className="btn btn-lg w-100 text-white fs-2 m-3">Resumen de gastos</button>
               </Link>
               <Link to="/addexpense">
                   <button type="button" className="btn btn-circle btn-xl"> <i className="fa-solid fa-plus"></i> </button>
               </Link>
-              <AddExpenseButton />
             </div>
-          </div>      
+          </div>
         </>
     )
 }
-
-export const barData = {
-  labels: ['Enero', 'Febrero', 'Marzo', 'Abril'],
-  datasets: [
-    {
-      label: 'Fijos',
-      data: [1800,1600,1500,1200],
-      backgroundColor: 'rgb(153, 204, 255)',
-    },
-    {
-      label: 'Variables',
-      data: [1500,1300,1200,1000],
-      backgroundColor: 'rgb(255, 153, 204)',
-    },
-    
-  ],
-};  
-
-export const options = {
-plugins: {
-  title: {
-    display: true,
-    text: 'Conmo',
-  },
-},
-responsive: true,
-scales: {
-  x: {
-    stacked: true,
-  },
-  y: {
-    stacked: true,
-  },
-},
-};
-
-export const pieData = {
-labels: ['Ocio', 'Trabajo'],
-datasets: [
-  {
-    label: 'ocio vs casa',
-    data: [1800, 1200],
-    backgroundColor: [
-      'rgb(255, 255, 153)',
-      'rgb(204, 153, 255)',
-    ],
-    borderColor: [
-      'rgba(255, 99, 132, 1)',
-      'rgba(54, 162, 235, 1)',
-    ],
-    borderWidth: 1,
-  },
-],
-};
