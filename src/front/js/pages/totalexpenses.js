@@ -1,12 +1,20 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
+import { format } from "date-fns";
 
 export const Totalexpenses = () => {
     const { store, actions } = useContext(Context);
+    const [ expenses, setExpenses] = useState([]);
     useEffect(() => {
-        actions.getExpenses();
+        async function transformData() {
+            await actions.getExpenses();
+            const data = store.expenses.map((expense) => ({ ...expense, dateTime: format(new Date(expense.dateTime), 'dd/MM/yyyy' )}))
+            setExpenses(data)
+        }
+        transformData();
     }, [])
+
     return (
         <>
             <div id="login" className="w-100 h-100">
@@ -20,25 +28,23 @@ export const Totalexpenses = () => {
                                 <tr>
                                     <th scope="col">Fecha</th>
                                     <th scope="col">Tipo</th>
-                                    <th scope="col">Categoria</th>
+                                    <th scope="col">Categoría</th>
                                     <th scope="col">Importe</th>
-                                    <th scope="col">Balance</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {store.expenses.map(({dateTime, type, category, value}, index) => (
+                                {expenses.map(({dateTime, type, category, value}, index) => (
                                     <tr key={index}>
                                         <td scope="col">{dateTime}</td>
-                                        <td scope="col">{type}</td>
-                                        <td scope="col">{category}</td>
+                                        <td scope="col">{type.name}</td>
+                                        <td scope="col">{category.name}</td>
                                         <td scope="col">{value}</td>
-                                        <td scope="col">400</td>
                                     </tr>
                                 ))}
                             </tbody>
                         </table>
                         <Link to="/expenses">
-                            <button className="btn btn-success rounded">Volver</button>
+                           <button id="botoningreso" className="btn btn-lg w-100 text-white fs-4 m-3">Volver</button>
                         </Link>
                     </div>
                 </div>

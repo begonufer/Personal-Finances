@@ -35,14 +35,14 @@ export const Totalincomes = () => {
                                 {incomes.map(({value, incomecategory, dateTime}, index) => (  
                                     <tr key={index}>
                                         <td scope="col">{dateTime}</td>
-                                        <td scope="col">{incomecategory}</td>
+                                        <td scope="col">{incomecategory.name}</td>
                                         <td scope="col">{value}</td>
                                     </tr>
                                 ))}
                             </tbody>
                         </table>
                         <Link to="/income">
-                            <button className="btn btn-success rounded">Volver</button>
+                           <button id="botoningreso" className="btn btn-lg w-100 text-white fs-4 m-3">Volver</button>
                         </Link>
                     </div>
                 </div>
